@@ -16,3 +16,5 @@ docx2txt==0.9
 requests==2.32.4
 # Additional EB dependencies
 awsebcli==3.20.10
+# Twilio for WhatsApp integration
+twilio==9.3.6
