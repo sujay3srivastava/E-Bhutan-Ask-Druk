@@ -1,5 +1,23 @@
 # Ask Druk 🐉 - Bhutan's Sovereign AI Citizen Assistant
 
+<div align="center">
+
+![Ask Druk Web Interface](Screenshots/Web_Screenshot.png)
+
+**Web Interface - Chat with Druk at [askdruk.ravvio.in](https://askdruk.ravvio.in)**
+
+</div>
+
+<div align="center">
+
+![Ask Druk WhatsApp Interface](Screenshots/Whatsapp_Screenshot1.jpeg)
+
+**WhatsApp Integration - Message [+91 8220845103](https://wa.me/918220845103)**
+
+</div>
+
+---
+
 **Empowering every Bhutanese citizen with instant access to government services and legal rights**
 
 Ask Druk is a sovereign AI-powered citizen assistant that makes government services, legal rights, and regulatory information accessible to every Bhutanese citizen in simple, conversational language. Built for the E-Bhutan Hackathon by Draper Startup House.
@@ -168,6 +186,9 @@ Draper_E_Bhutan/
 │       └── labour_act_2007.json
 ├── static/                  # Frontend assets
 │   └── druk.html           # Main chat interface
+├── Screenshots/             # Application screenshots
+│   ├── Web_Screenshot.png
+│   └── Whatsapp_Screenshot1.jpeg
 ├── .ebextensions/          # AWS deployment configuration
 └── .platform/              # Platform-specific configurations
 ```
