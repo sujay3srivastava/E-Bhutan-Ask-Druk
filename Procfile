@@ -1,1 +1,1 @@
-web: gunicorn --workers 2 --threads 2 --timeout 300 --bind 0.0.0.0:8000 --worker-class uvicorn.workers.UvicornWorker --log-level info --error-logfile /var/log/gunicorn-error.log --access-logfile /var/log/gunicorn-access.log wsgi:application
+web: gunicorn --bind 0.0.0.0:8000 --workers 2 --threads 2 --timeout 300 --worker-class uvicorn.workers.UvicornWorker --worker-connections 1000 --max-requests 1000 --max-requests-jitter 50 --preload --log-level info --access-logfile - --error-logfile - wsgi:application
