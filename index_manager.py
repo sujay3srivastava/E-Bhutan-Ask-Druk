@@ -47,8 +47,8 @@ class IndexManager:
     
     def _init_settings(self):
         """Initialize LlamaIndex settings"""
-        Settings.chunk_size = 512  # Larger chunks for government information
-        Settings.chunk_overlap = 50
+        Settings.chunk_size = 2048  # Large chunks for rich government metadata
+        Settings.chunk_overlap = 200
         Settings.num_output = 2048
         
         # Azure OpenAI LLM
