@@ -95,7 +95,7 @@
   ],
   "emergency_contacts": [
     {
-      "service": "Police",
+      "service": "Police & General Emergency",
       "number": "113",
       "available": "24/7"
     },
@@ -105,13 +105,18 @@
       "available": "24/7"
     },
     {
-      "service": "Medical Emergency",
+      "service": "Medical/Ambulance",
       "number": "112",
       "available": "24/7"
     },
     {
-      "service": "National Emergency",
+      "service": "Traffic Emergency",
       "number": "111",
+      "available": "24/7"
+    },
+    {
+      "service": "Disaster Helpline",
+      "number": "999",
       "available": "24/7"
     },
     {

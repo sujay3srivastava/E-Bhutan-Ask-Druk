@@ -195,6 +195,15 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for deta
 - 📊 Service information updates
 - 🧪 Testing and bug reports
 
+## 📞 Emergency Contacts
+
+- **Police & General Emergency**: 113
+- **Fire Department**: 110
+- **Medical/Ambulance**: 112
+- **Traffic Emergency**: 111
+- **Disaster Helpline**: 999
+- **Tourist Helpline**: +975-2-323251
+
 ## 📸 Screenshots
 
 Will be added

@@ -482,10 +482,11 @@
             <div class="emergency-contacts">
                 <div class="emergency-title">Emergency Contacts</div>
                 <div class="emergency-list">
-                    Police: 113<br>
+                    Police & General: 113<br>
                     Fire: 110<br>
                     Medical: 112<br>
-                    National Emergency: 111
+                    Traffic: 111<br>
+                    Disaster: 999
                 </div>
             </div>
         </div>
@@ -753,12 +754,24 @@
                 // Convert line breaks to HTML
                 content = content.replace(/\n/g, '<br>');
                 
-                // Format bullet points
-                content = content.replace(/^• (.+)$/gm, '<br>• $1');
-                content = content.replace(/^\* (.+)$/gm, '<br>• $1');
+                // Format headers with ###
+                content = content.replace(/^### (.+)$/gm, '<br><strong style="color: #FF6B35; font-size: 1.1em;">$1</strong><br>');
                 
-                // Format numbered lists
-                content = content.replace(/^(\d+)\. (.+)$/gm, '<br>$1. $2');
+                // Format bold text with **text**
+                content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                
+                // Format numbered lists with proper spacing
+                content = content.replace(/^(\d+)\. (.+)$/gm, '<br><strong style="color: #333;">$1. $2</strong>');
+                
+                // Format bullet points with better styling
+                content = content.replace(/^- (.+)$/gm, '<div style="margin-left: 20px; margin-bottom: 5px;">• $1</div>');
+                
+                // Format sub-bullet points
+                content = content.replace(/^  - (.+)$/gm, '<div style="margin-left: 40px; margin-bottom: 3px;">◦ $1</div>');
+                
+                // Clean up extra line breaks
+                content = content.replace(/<br><br>/g, '<br>');
+                content = content.replace(/^<br>/, '');
                 
                 return content;
             }
