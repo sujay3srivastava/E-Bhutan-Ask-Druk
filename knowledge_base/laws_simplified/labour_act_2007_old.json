@@ -5,8 +5,8 @@
   "key_sections": {
     "working_hours": {
       "section": "Section 15",
-      "simple_explanation": "You cannot be made to work more than 8 hours a day or 40 hours a week without overtime pay",
-      "details": "Normal working hours are 8 hours per day and 40 hours per week. If you work more, your employer must pay you extra (overtime at 1.5 times regular rate)."
+      "simple_explanation": "You cannot be made to work more than 8 hours a day or 48 hours a week without overtime pay",
+      "details": "Normal working hours are 8 hours per day and 48 hours per week. If you work more, your employer must pay you extra (overtime)."
     },
     "termination": {
       "section": "Section 45",
@@ -27,11 +27,6 @@
       "section": "Section 40",
       "simple_explanation": "You are entitled to paid vacation days every year",
       "details": "After working for one year, you get at least 10 days of paid annual leave. This increases with years of service."
-    },
-    "minimum_wage": {
-      "section": "Wage Regulations",
-      "simple_explanation": "You have the right to receive at least the minimum wage",
-      "details": "The current minimum wage is BTN 125 per day (approximately $2 USD). The government has pledged to increase this to Nu 460 per day."
     }
   },
   "common_violations": [
@@ -39,22 +34,15 @@
     "Making employees work excessive hours without overtime pay",
     "Firing employees without proper notice or reason",
     "Not providing safe working conditions",
-    "Not giving entitled leave days",
-    "Paying below minimum wage"
+    "Not giving entitled leave days"
   ],
   "how_to_get_help": {
     "first_step": "Try to resolve the issue with your employer directly",
-    "second_step": "Contact the Ministry of Industry, Commerce & Employment",
+    "second_step": "Contact the Ministry of Labour and Human Resources",
     "contact": {
-      "phone": "+975-2-328236/324845/333867",
-      "address": "Ministry of Industry, Commerce & Employment, Thimphu",
-      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
-      "email": "info@moice.gov.bt"
+      "phone": "+975-2-326915",
+      "address": "Ministry of Labour and Human Resources, Thimphu",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
     }
-  },
-  "recent_updates": {
-    "ministry_change": "Labour matters are now handled by the Ministry of Industry, Commerce & Employment (formerly Ministry of Labour and Human Resources)",
-    "working_hours_clarification": "Standard working week is 40 hours (8 hours per day, 5 days per week)",
-    "minimum_wage_update": "Current minimum wage is BTN 125 per day with planned increase to Nu 460"
   }
 }

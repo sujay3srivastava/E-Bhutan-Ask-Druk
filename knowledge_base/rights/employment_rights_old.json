@@ -13,14 +13,14 @@
       "relevant_laws": ["Labour Act 2007, Section 45"],
       "next_steps": [
         "Request a written termination letter from your employer",
-        "Contact Ministry of Industry, Commerce & Employment within 30 days",
+        "Contact Labour Ministry within 30 days",
         "Gather all employment documents and contracts",
         "File a formal complaint if dismissal was unfair"
       ],
       "simplified_explanation": "If you're fired without proper cause or procedure, you have legal rights and can take action to protect yourself.",
       "office_contact": {
-        "name": "Ministry of Industry, Commerce & Employment",
-        "phone": "+975-2-328236/324845/333867",
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
         "address": "Thimphu, Bhutan",
         "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
       }
@@ -29,22 +29,21 @@
       "scenario": "Employer not paying agreed salary",
       "rights": [
         "Right to receive agreed salary on time",
-        "Right to overtime payment for extra hours (1.5 times regular rate)",
+        "Right to overtime payment for extra hours",
         "Right to salary even during notice period",
-        "Right to final settlement upon leaving",
-        "Right to minimum wage (currently BTN 125 per day)"
+        "Right to final settlement upon leaving"
       ],
       "relevant_laws": ["Labour Act 2007, Section 32"],
       "next_steps": [
         "Keep records of work hours and salary agreements",
         "Speak with your employer first to resolve the issue",
-        "File complaint with Ministry of Industry, Commerce & Employment if unresolved",
+        "File complaint with Labour Ministry if unresolved",
         "Seek legal advice if necessary"
       ],
       "simplified_explanation": "Your employer must pay you the salary you agreed upon, on time. If they don't, you can get help to recover your money.",
       "office_contact": {
-        "name": "Ministry of Industry, Commerce & Employment",
-        "phone": "+975-2-328236/324845/333867",
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
         "address": "Thimphu, Bhutan",
         "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
       }
@@ -61,24 +60,22 @@
       "next_steps": [
         "Document unsafe conditions with photos if possible",
         "Report to your supervisor or safety officer",
-        "Contact Ministry of Industry, Commerce & Employment if employer doesn't act",
+        "Contact Labour Ministry if employer doesn't act",
         "File formal safety complaint"
       ],
       "simplified_explanation": "You have the right to work in a safe environment. If your workplace is dangerous, you can refuse to work and get help.",
       "office_contact": {
-        "name": "Ministry of Industry, Commerce & Employment",
-        "phone": "+975-2-328236/324845/333867",
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
         "address": "Thimphu, Bhutan",
         "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
       }
     }
   },
   "general_info": {
-    "working_hours": "Maximum 8 hours per day, 40 hours per week",
-    "minimum_wage": "BTN 125 per day (approximately $2 USD). Government has pledged to increase to Nu 460 per day.",
+    "working_hours": "Maximum 8 hours per day, 48 hours per week",
+    "minimum_wage": "Contact Labour Ministry for current rates",
     "annual_leave": "Minimum 10 days per year after 1 year of service",
-    "sick_leave": "Minimum 5 working days per year as per Labour Act",
-    "overtime_rate": "1.5 times regular salary rate for overtime work",
-    "provident_fund": "Both employer and employee contribute minimum 5% of monthly basic wage"
+    "sick_leave": "As per employment contract and company policy"
   }
 }

@@ -7,15 +7,15 @@
       "step_number": 1,
       "title": "Gather Required Documents",
       "description": "You will need citizenship ID, birth certificate, and recent photographs",
-      "documents_required": ["Citizenship ID", "Birth Certificate", "2 passport-size photos", "Security Clearance Certificate"],
+      "documents_required": ["Citizenship ID", "Birth Certificate", "2 passport-size photos"],
       "time_estimate": "1 day"
     },
     {
       "step_number": 2,
-      "title": "Visit Immigration Office or Apply Online",
-      "description": "Go to the Immigration Office in Thimphu with all your documents or apply online through www.citizenservices.gov.bt",
+      "title": "Visit Immigration Office",
+      "description": "Go to the Immigration Office in Thimphu with all your documents",
       "documents_required": [],
-      "time_estimate": "30 minutes travel time or immediate online"
+      "time_estimate": "30 minutes travel time"
     },
     {
       "step_number": 3,
@@ -41,20 +41,17 @@
   ],
   "total_time": "7-10 working days",
   "fees": {
-    "regular": 1000,
-    "currency": "Nu.",
-    "note": "Regular passport application fee is Nu. 1,000. Emergency travel documents available for Nu. 20 USD equivalent."
+    "regular": 500,
+    "urgent": 1000,
+    "currency": "Nu."
   },
   "offices": ["Immigration Office, Thimphu"],
-  "online_available": true,
-  "online_portal": "www.citizenservices.gov.bt",
+  "online_available": false,
   "tips": [
     "Apply early during non-peak seasons",
     "Bring photocopies of all documents",
     "Check office hours before visiting",
-    "Keep your receipt safe for collection",
-    "Consider applying online for convenience",
-    "Ensure security clearance certificate is valid"
+    "Keep your receipt safe for collection"
   ],
   "contact_info": {
     "phone": "+975-2-322526",

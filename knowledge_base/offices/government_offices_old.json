@@ -13,7 +13,7 @@
         "longitude": "89.6339"
       },
       "services_details": {
-        "passport": "Regular passport services (Nu. 1,000). Emergency travel documents available.",
+        "passport": "Regular and urgent passport services",
         "visa": "Tourist and business visa processing",
         "work_permit": "Work permit applications for foreign nationals",
         "residence_permit": "Residence permit for long-term stays"
@@ -38,11 +38,11 @@
       }
     },
     {
-      "name": "Ministry of Industry, Commerce & Employment",
+      "name": "Ministry of Labour and Human Resources",
       "services": ["employment_disputes", "work_permits", "labour_complaints"],
-      "address": "Thongsel Lam, Lower Motithang, Thimphu, Bhutan",
-      "contact": "+975-2-328236/324845/333867",
-      "email": "info@moice.gov.bt",
+      "address": "Kawangjangsa, Thimphu, Bhutan",
+      "contact": "+975-2-326915",
+      "email": "info@molhr.gov.bt",
       "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
       "dzongkhag": "Thimphu",
       "coordinates": {
@@ -58,10 +58,10 @@
     {
       "name": "Department of Trade",
       "services": ["business_registration", "trade_licenses", "import_export"],
-      "address": "Ministry of Industry, Commerce & Employment, Thimphu",
+      "address": "Ministry of Economic Affairs, Thimphu",
       "contact": "+975-2-322463",
-      "email": "trade@moice.gov.bt",
-      "website": "www.moice.gov.bt",
+      "email": "trade@moea.gov.bt",
+      "website": "www.moea.gov.bt",
       "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
       "dzongkhag": "Thimphu",
       "coordinates": {
@@ -90,25 +90,6 @@
         "birth_certificate": "Birth registration and certificate issuance",
         "death_certificate": "Death registration and certificate issuance",
         "marriage_certificate": "Marriage registration and certificate issuance"
-      }
-    },
-    {
-      "name": "Office of Consumer Protection",
-      "services": ["consumer_complaints", "product_safety", "fair_trading"],
-      "address": "Ministry of Industry, Commerce & Employment, Thimphu",
-      "contact": "support@moea.gov.bt",
-      "email": "support@moea.gov.bt",
-      "website": "www.moea.gov.bt",
-      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
-      "dzongkhag": "Thimphu",
-      "coordinates": {
-        "latitude": "27.4712",
-        "longitude": "89.6339"
-      },
-      "services_details": {
-        "consumer_complaints": "Filing and resolving consumer complaints",
-        "product_safety": "Ensuring product safety and quality standards",
-        "fair_trading": "Monitoring fair trade practices and preventing exploitation"
       }
     }
   ],
@@ -141,48 +122,6 @@
     {
       "service": "Tourist Helpline",
       "number": "+975-2-323251",
-      "available": "Office hours"
-    },
-    {
-      "service": "COVID-19 Hotline",
-      "number": "2121",
-      "available": "24/7"
-    },
-    {
-      "service": "National Commission for Women and Children",
-      "number": "1098",
-      "available": "Office hours"
-    },
-    {
-      "service": "Youth Support Services (Nazhoen Helpline)",
-      "number": "214",
-      "available": "Office hours"
-    }
-  ],
-  "utility_contacts": [
-    {
-      "service": "Electricity",
-      "number": "1250",
-      "available": "24/7"
-    },
-    {
-      "service": "Drukair",
-      "number": "1300",
-      "available": "Office hours"
-    },
-    {
-      "service": "Tashi Air",
-      "number": "1234",
-      "available": "Office hours"
-    },
-    {
-      "service": "Bhutan Telecom",
-      "number": "1600",
-      "available": "Office hours"
-    },
-    {
-      "service": "Tashi Cell",
-      "number": "7700",
       "available": "Office hours"
     }
   ]
