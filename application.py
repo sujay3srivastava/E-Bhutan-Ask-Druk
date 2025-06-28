@@ -1,9 +1,10 @@
 # application.py - Ask Druk - Bhutan's Sovereign AI Citizen Assistant
-from fastapi import FastAPI, HTTPException, Depends, UploadFile, File, Form
+from fastapi import FastAPI, HTTPException, Depends, UploadFile, File, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, Response
 from pydantic import BaseModel
+from twilio.twiml.messaging_response import MessagingResponse
 import os
 import json
 import datetime
@@ -22,6 +23,14 @@ from document_loader import DocumentLoader
 from index_manager import IndexManager
 from druk_system_prompt import DRUK_SYSTEM_PROMPT, get_citizen_context_prompt
 from azure_helpers import parse_azure_error, get_user_friendly_error_message, create_safe_chat_prompt
+
+# Import WhatsApp integration
+from whatsapp_integration import (
+    verify_twilio_signature, 
+    process_whatsapp_message, 
+    send_whatsapp_message,
+    whatsapp_sessions
+)
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, 
@@ -298,6 +307,118 @@ async def get_emergency_contacts():
             {"service": "Tourist Helpline", "number": "+975-2-323251", "available": "Office hours"}
         ]
     }
+
+# WhatsApp Integration Endpoints
+@app.post("/webhook/whatsapp")
+async def whatsapp_webhook(request: Request):
+    """Webhook endpoint for incoming WhatsApp messages from Twilio"""
+    try:
+        # Get the raw body for signature verification
+        body = await request.body()
+        
+        # Verify Twilio signature (optional but recommended for production)
+        if not verify_twilio_signature(request, body):
+            logging.warning("Invalid Twilio signature")
+            raise HTTPException(status_code=403, detail="Invalid signature")
+        
+        # Parse form data
+        form_data = await request.form()
+        
+        # Extract message details
+        from_number = form_data.get("From", "")  # whatsapp:+1234567890
+        to_number = form_data.get("To", "")      # whatsapp:+14155238886
+        message_body = form_data.get("Body", "")
+        profile_name = form_data.get("ProfileName", "")
+        message_sid = form_data.get("MessageSid", "")
+        
+        logging.info(f"WhatsApp message received from {from_number}: {message_body}")
+        
+        # Process the message
+        response_text = await process_whatsapp_message(
+            from_number=from_number,
+            message_body=message_body,
+            profile_name=profile_name
+        )
+        
+        # Create Twilio response
+        twiml_response = MessagingResponse()
+        twiml_response.message(response_text)
+        
+        # Log the response
+        logging.info(f"WhatsApp response sent to {from_number}: {response_text[:100]}...")
+        
+        return Response(
+            content=str(twiml_response),
+            media_type="application/xml"
+        )
+        
+    except Exception as e:
+        logging.error(f"Error in WhatsApp webhook: {str(e)}")
+        
+        # Return a generic error response
+        twiml_response = MessagingResponse()
+        twiml_response.message("🤖 Sorry, I'm experiencing technical difficulties. Please try again later.")
+        
+        return Response(
+            content=str(twiml_response),
+            media_type="application/xml",
+            status_code=200  # Return 200 to avoid Twilio retries
+        )
+
+@app.post("/webhook/whatsapp/status")
+async def whatsapp_status_callback(request: Request):
+    """Webhook endpoint for WhatsApp message status updates"""
+    try:
+        form_data = await request.form()
+        
+        message_sid = form_data.get("MessageSid", "")
+        message_status = form_data.get("MessageStatus", "")
+        to_number = form_data.get("To", "")
+        
+        logging.info(f"WhatsApp status update: {message_sid} - {message_status} to {to_number}")
+        
+        # You can store status updates in database if needed
+        # update_message_status(message_sid, message_status)
+        
+        return {"status": "ok"}
+        
+    except Exception as e:
+        logging.error(f"Error in WhatsApp status callback: {str(e)}")
+        return {"status": "error", "message": str(e)}
+
+@app.post("/send-whatsapp")
+async def send_whatsapp_endpoint(
+    to_number: str = Form(...),
+    message: str = Form(...)
+):
+    """Endpoint to send WhatsApp messages (for testing or admin use)"""
+    try:
+        # Ensure number has whatsapp: prefix
+        if not to_number.startswith("whatsapp:"):
+            to_number = f"whatsapp:{to_number}"
+        
+        success = await send_whatsapp_message(to_number, message)
+        
+        if success:
+            return {"status": "sent", "message": "Message sent successfully"}
+        else:
+            return {"status": "failed", "message": "Failed to send message"}
+            
+    except Exception as e:
+        logging.error(f"Error sending WhatsApp message: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error sending message: {str(e)}")
+
+@app.get("/whatsapp/sessions")
+async def get_whatsapp_sessions():
+    """Get active WhatsApp sessions (for admin/monitoring)"""
+    try:
+        return {
+            "total_sessions": len(whatsapp_sessions),
+            "sessions": whatsapp_sessions
+        }
+    except Exception as e:
+        logging.error(f"Error getting WhatsApp sessions: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"Error getting sessions: {str(e)}")
 
 # Helper functions
 def detect_query_type(message: str) -> str:
