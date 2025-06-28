@@ -7,7 +7,7 @@ llama-index-core==0.12.27
 llama-index-llms-azure-openai==0.3.2
 llama-index-embeddings-azure-openai==0.3.2
 llama-index-readers-file==0.4.2
-pathlib==1.0.1
+#pathlib=1.0.1
 llama-index==0.12.27
 openai==1.67.0
 asgiref>=3.5.0
@@ -17,4 +17,4 @@ requests==2.32.4
 # Additional EB dependencies
 awsebcli==3.20.10
 # Twilio for WhatsApp integration
-twilio==9.3.6
+twilio==8.12.0
