@@ -751,26 +751,26 @@
             }
             
             formatMessage(content) {
+                // First handle headers before converting line breaks
+                content = content.replace(/^### (.+)$/gm, '<h3 style="color: #FF6B35; font-size: 1.1em; font-weight: bold; margin: 10px 0 5px 0; border-bottom: 2px solid #FF6B35; padding-bottom: 3px;">$1</h3>');
+                
+                // Handle bold text
+                content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                
                 // Convert line breaks to HTML
                 content = content.replace(/\n/g, '<br>');
                 
-                // Format headers with ###
-                content = content.replace(/^### (.+)$/gm, '<br><strong style="color: #FF6B35; font-size: 1.1em;">$1</strong><br>');
+                // Format numbered lists
+                content = content.replace(/<br>(\d+)\. (.+?)(?=<br>|$)/g, '<br><div style="font-weight: bold; color: #333; margin: 8px 0 3px 0;">$1. $2</div>');
                 
-                // Format bold text with **text**
-                content = content.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+                // Format bullet points with dash
+                content = content.replace(/<br>- (.+?)(?=<br>|$)/g, '<div style="margin-left: 20px; margin-bottom: 5px; line-height: 1.4;">• $1</div>');
                 
-                // Format numbered lists with proper spacing
-                content = content.replace(/^(\d+)\. (.+)$/gm, '<br><strong style="color: #333;">$1. $2</strong>');
+                // Format sub-bullet points (with spaces before dash)
+                content = content.replace(/<br>  - (.+?)(?=<br>|$)/g, '<div style="margin-left: 40px; margin-bottom: 3px; line-height: 1.4;">◦ $1</div>');
                 
-                // Format bullet points with better styling
-                content = content.replace(/^- (.+)$/gm, '<div style="margin-left: 20px; margin-bottom: 5px;">• $1</div>');
-                
-                // Format sub-bullet points
-                content = content.replace(/^  - (.+)$/gm, '<div style="margin-left: 40px; margin-bottom: 3px;">◦ $1</div>');
-                
-                // Clean up extra line breaks
-                content = content.replace(/<br><br>/g, '<br>');
+                // Clean up multiple line breaks
+                content = content.replace(/<br>\s*<br>/g, '<br>');
                 content = content.replace(/^<br>/, '');
                 
                 return content;
