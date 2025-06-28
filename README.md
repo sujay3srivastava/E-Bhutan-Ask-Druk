@@ -1,7 +1,14 @@
-# Ask Druk🐉-  Bhutan's Sovereign AI Citizen Assistant
+# Ask Druk 🐉 - Bhutan's Sovereign AI Citizen Assistant
 
 **Empowering every Bhutanese citizen with instant access to government services and legal rights**
-My hackathon project for E-Bhutan Hackathon by Draper Startup House. Ask Druk is a sovereign Al-powered citizen assistant that makes government services, legal rights, and regulatory information accessible to every Bhutanese citizen in simple, conversational language.
+
+Ask Druk is a sovereign AI-powered citizen assistant that makes government services, legal rights, and regulatory information accessible to every Bhutanese citizen in simple, conversational language. Built for the E-Bhutan Hackathon by Draper Startup House.
+
+## 🌐 Live Application
+
+- **🌍 Web Interface**: [https://askdruk.ravvio.in](https://askdruk.ravvio.in)
+- **📱 WhatsApp Chat**: [+91 8220845103](https://wa.me/918220845103)
+- **💬 Available 24/7** - Chat with Ask Druk anytime about government services
 
 ## 🌟 The Problem
 
@@ -21,54 +28,99 @@ The information exists, but it's scattered across dozens of websites in legal ja
 - ✅ Explains **citizen rights** in simple terms
 - ✅ Finds the **right office** and contact person
 - ✅ Works in **English and Dzongkha** (རྫོང་ཁ)
-- ✅ Available **24/7** on web, mobile, and SMS
+- ✅ Available **24/7** on web and WhatsApp
 
 ## 🎯 Key Features
 
 ### 🗣️ Natural Conversation
 ```
 You: "I want to start a small cafe. What do I need?"
-Druk: "Exciting! Here's your step-by-step guide: First, register at BCCI (3-5 days)..."
+Druk: "Exciting! Here's your step-by-step guide: First, register at Department of Trade (3-5 days)..."
 ```
 
 ### 📋 Complete Service Guides
-- Passport application
-- Driving license
-- Business registration  
-- Birth/Death certificates
-- Marriage registration
-- Land transactions
-- Work permits
-- And 50+ more services
+- **Travel Documents**: Passport application, visa information
+- **Transportation**: Driving license, vehicle registration
+- **Business Services**: Business registration, trade licenses
+- **Civil Documents**: Birth/Death certificates, marriage registration
+- **Legal Rights**: Employment, consumer, and tenant rights
+- **Emergency Services**: Always-available contact information
 
 ### ⚖️ Rights Information
-- Employment rights
-- Consumer protection
-- Tenant rights
-- Women's rights
-- Children's rights
-- Legal aid information
+- Employment rights and labor law guidance
+- Consumer protection and complaint procedures
+- Legal aid information and contact details
+- Step-by-step guides for filing complaints
 
 ### 📍 Smart Office Finder
-- Nearest office location
-- Officer names and contacts
-- Best times to visit
-- Current waiting times
-- Required documents
+- Nearest government office locations
+- Officer contacts and working hours
+- Required documents and procedures
+- Updated fee structures and timelines
 
-## 🚀 Quick Start
+## 🚀 Try Ask Druk Now
+
+### 🌐 Web Interface
+Visit [https://askdruk.ravvio.in](https://askdruk.ravvio.in) and start chatting immediately.
+
+### 📱 WhatsApp Integration
+Message **+91 8220845103** on WhatsApp to chat with Ask Druk on your mobile device.
+
+### 💬 Sample Questions to Try:
+1. **"How do I apply for a passport?"**
+2. **"I was fired without notice. What are my rights?"**
+3. **"Where is the nearest immigration office?"**
+4. **"How do I register a new business in Thimphu?"**
+5. **"What documents do I need for a driving license?"**
+
+## 🛠️ Technology Stack
+
+- **Backend**: FastAPI (Python) with Azure OpenAI
+- **AI Engine**: LlamaIndex for RAG (Retrieval-Augmented Generation)
+- **Frontend**: Modern HTML5, CSS3, JavaScript
+- **Knowledge Base**: Verified government information in JSON format
+- **Deployment**: AWS Elastic Beanstalk with auto-scaling
+- **Database**: File-based knowledge system for reliability
+
+## 📊 Verified Information
+
+All information provided by Ask Druk is:
+- ✅ **Verified against official government sources**
+- ✅ **Updated as of June 2025**
+- ✅ **Cross-checked with ministry websites**
+- ✅ **Reviewed for accuracy and completeness**
+
+### Key Information Sources:
+- Ministry of Industry, Commerce & Employment
+- Immigration Office, Ministry of Home Affairs
+- Road Safety and Transport Authority (RSTA)
+- Office of Consumer Protection
+- Royal Bhutan Police (Emergency Services)
+
+## 📞 Emergency Contacts (Always Available)
+
+- **Police & General Emergency**: 113
+- **Fire Department**: 110
+- **Medical/Ambulance**: 112
+- **Traffic Emergency**: 111
+- **Disaster Helpline**: 999
+- **Tourist Helpline**: +975-2-323251
+- **COVID-19 Hotline**: 2121
+- **Women & Children Helpline**: 1098
+
+## 🎮 Quick Start for Developers
 
 ### Prerequisites
-- Python 3.8+
-- FastAPI
-- Azure OpenAI API key (or any OpenAI-compatible API)
+- Python 3.11+
+- FastAPI and Uvicorn
+- Azure OpenAI API key
 
 ### Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/ask-druk.git
-cd ask-druk
+git clone https://github.com/sujay3srivastava/E-Bhutan-Ask-Druk.git
+cd Draper_E_Bhutan
 
 # Create virtual environment
 python -m venv venv
@@ -78,158 +130,141 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 
 # Set up environment variables
-cp .env.example .env
-# Edit .env with your API keys
+cp .env.template .env
+# Edit .env with your Azure OpenAI credentials
 ```
 
-### Running the Application
+### Running Locally
 
 ```bash
 # Start the FastAPI server
-uvicorn app:app --reload --host 0.0.0.0 --port 8000
+uvicorn application:app --reload --host 0.0.0.0 --port 8000
 
 # Access the application
 # Web interface: http://localhost:8000
 # API docs: http://localhost:8000/docs
+# Health check: http://localhost:8000/health
 ```
 
 ## 📁 Project Structure
 
 ```
-ask-druk/
-├── app.py                 # FastAPI main application
-├── frontend/             
-│   ├── index.html        # Main chat interface
-│   ├── css/
-│   │   └── bhutan.css    # Bhutanese themed styles
-│   └── js/
-│       └── chat.js       # Chat functionality
-├── models/
-│   ├── citizen.py        # User query models
-│   └── services.py       # Government service models
-├── services/
-│   ├── ai_engine.py      # LlamaIndex RAG implementation
-│   ├── knowledge_base.py # Service information
-│   └── office_finder.py  # Location services
-├── data/
-│   ├── services/         # Government service guides
-│   ├── rights/           # Citizen rights information
-│   └── offices/          # Office locations & contacts
-└── utils/
-    ├── prompts.py        # Citizen-friendly prompts
-    └── scrapers.py       # Government website scrapers
+Draper_E_Bhutan/
+├── application.py              # Main FastAPI application
+├── wsgi.py                    # WSGI entry point for deployment
+├── Procfile                   # Process configuration for deployment
+├── requirements.txt           # Python dependencies
+├── knowledge_base/           # Verified government information
+│   ├── services/            # Government service procedures
+│   │   ├── passport_application.json
+│   │   ├── driving_license.json
+│   │   └── business_registration.json
+│   ├── rights/              # Citizen rights information
+│   │   ├── employment_rights.json
+│   │   └── consumer_rights.json
+│   ├── offices/             # Government office contacts
+│   │   └── government_offices.json
+│   └── laws_simplified/     # Legal information in plain language
+│       └── labour_act_2007.json
+├── static/                  # Frontend assets
+│   └── druk.html           # Main chat interface
+├── .ebextensions/          # AWS deployment configuration
+└── .platform/              # Platform-specific configurations
 ```
 
-## 🎮 Demo
+## 🌍 Deployment
 
-### Try these example queries:
-
-1. **🏢 Business Registration**
-   ```
-   "I want to start a restaurant in Thimphu"
-   ```
-
-2. **⚖️ Employment Rights**
-   ```
-   "My employer hasn't paid me for 2 months"
-   ```
-
-3. **📄 Document Services**
-   ```
-   "How do I get a birth certificate for my baby?"
-   ```
-
-4. **🏛️ Office Finder**
-   ```
-   "Where do I renew my driving license in Paro?"
-   ```
-
-## 🛠️ Technology Stack
-
-- **Backend**: FastAPI (Python)
-- **AI Engine**: LlamaIndex + Azure OpenAI
-- **Frontend**: HTML5, JavaScript, Tailwind CSS
-- **Database**: SQLite (demo) / PostgreSQL (production)
-- **Deployment**: Docker, AWS/GovCloud ready
-
-## 📊 Impact Metrics
-
-- **70%** reduction in government office visits
-- **4 hours** saved per citizen per service
-- **24/7** availability vs 9-5 offices
-- **3 languages** supported
-- **100%** accurate information
-
-## 🗺️ Roadmap
-
-### Phase 1: Web Platform ✅
-- Basic chat interface
-- Top 20 government services
-- English language support
-
-### Phase 2: Mobile & Dzongkha 🚧
-- Mobile responsive design
-- Full Dzongkha support
-- Voice input/output
-
-### Phase 3: Accessibility 📅
-- WhatsApp integration
-- SMS for feature phones
-- Voice hotline (IVR)
-- Rural kiosks
-
-### Phase 4: Advanced Features 📅
-- Appointment booking
-- Document upload/verification
-- Payment integration
-- Proactive notifications
+The application is deployed on AWS Elastic Beanstalk with:
+- **Auto-scaling** for handling traffic spikes
+- **Session-based routing** for conversation continuity
+- **Health monitoring** and automatic recovery
+- **Emergency fallbacks** ensuring critical information is always available
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for details.
+We welcome contributions! Areas where we need help:
+- 🌐 **Dzongkha language processing** and translation
+- 📱 **Mobile app development** for iOS and Android
+- 🗣️ **Voice interface** for accessibility
+- 📊 **Government service updates** and verification
+- 🧪 **Testing and quality assurance**
 
-### Areas we need help:
-- 🌐 Dzongkha language processing
-- 📱 Mobile app development
-- 🗣️ Voice interface
-- 📊 Service information updates
-- 🧪 Testing and bug reports
+## 📈 Impact & Metrics
 
-## 📞 Emergency Contacts
+- **Verified information** from 5+ government ministries
+- **24/7 availability** vs traditional 9-5 office hours
+- **Instant responses** vs days of waiting for information
+- **Multi-channel access** (web + WhatsApp)
+- **Emergency services** always accessible even during downtime
 
-- **Police & General Emergency**: 113
-- **Fire Department**: 110
-- **Medical/Ambulance**: 112
-- **Traffic Emergency**: 111
-- **Disaster Helpline**: 999
-- **Tourist Helpline**: +975-2-323251
+## 🗺️ Roadmap
 
-## 📸 Screenshots
+### ✅ Phase 1: Core Platform (Completed)
+- Web-based chat interface
+- Core government services coverage
+- Emergency contact integration
+- WhatsApp connectivity
 
-Will be added
+### 🚧 Phase 2: Enhanced Features (In Progress)
+- Full Dzongkha language support
+- Voice input and output capabilities
+- Document upload and verification
+- Appointment booking integration
 
+### 📅 Phase 3: Accessibility & Scale
+- SMS support for feature phones
+- Voice hotline (IVR system)
+- Rural kiosk deployment
+- Integration with G2C platforms
+
+### 📅 Phase 4: Advanced AI Features
+- Proactive notifications for citizens
+- Personalized service recommendations
+- Multi-language real-time translation
+- Predictive service needs analysis
 
 ## 👥 Team
 
 - **Sujay Srivastava** - Full Stack Developer & AI Engineer
-- *Looking for collaborators in Dzongkha NLP and Government Relations*
+  - Email: sujay3sriv@gmail.com
+  - LinkedIn: [Sujay Srivastava](https://linkedin.com/in/sujaysrivastava)
+
+*Looking for collaborators in Dzongkha NLP, Government Relations, and Mobile Development*
+
+## 🏆 Recognition
+
+**🥇 Built for E-Bhutan Hackathon by Draper Startup House**
+- Solving real citizen problems with AI technology
+- Contributing to Bhutan's digital transformation
+- Supporting the vision of Digital Druk
 
 ## 📞 Contact & Support
 
-- **Email**: sujay3sriv@gmail.com
-- **Documentation**: [docs.askdruk.bt](https://docs.askdruk.bt)
-- **Report Issues**: [GitHub Issues](https://github.com/sujay3srivastava/E-Bhutan-Ask-Druk/issues)
-
+- **🌐 Try the App**: [https://askdruk.ravvio.in](https://askdruk.ravvio.in)
+- **📱 WhatsApp**: [+91 8220845103](https://wa.me/918220845103)
+- **📧 Email**: sujay3sriv@gmail.com
+- **🐛 Report Issues**: [GitHub Issues](https://github.com/sujay3srivastava/E-Bhutan-Ask-Druk/issues)
+- **📖 Documentation**: Available at the web interface
 
 ## 🙏 Acknowledgments
 
-- Thanks to Brad and Draper House Team for conducting E-Hackathon! [Draper Startup House](https://draperstartuphouse.com/)
-- All beta testers and citizens who provided feedback
+- **Draper Startup House** - For organizing the E-Bhutan Hackathon
+- **Government of Bhutan** - For making public information accessible
+- **Beta testers** - Citizens who provided valuable feedback
+- **Azure OpenAI** - For powering the AI capabilities
+
+## 📜 License
+
+This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
-  <strong>Built with ❤️ for the people of Bhutan</strong>
+  
+  🇧🇹 **Built with ❤️ for the people of Bhutan** 🇧🇹
   
   <em>"Making government services accessible to every citizen, one chat at a time"</em>
+  
+  **Kuzuzangpo! Try Ask Druk today: [askdruk.ravvio.in](https://askdruk.ravvio.in)**
+  
 </div>
