@@ -1,0 +1,61 @@
+{
+  "id": "driving_license",
+  "service_name": "Driving License",
+  "category": "Transportation",
+  "steps": [
+    {
+      "step_number": 1,
+      "title": "Prepare Required Documents",
+      "description": "Gather citizenship ID, medical certificate, and photographs",
+      "documents_required": ["Citizenship ID", "Medical Certificate", "2 passport-size photos"],
+      "time_estimate": "1-2 days"
+    },
+    {
+      "step_number": 2,
+      "title": "Study Traffic Rules",
+      "description": "Study the traffic rules and road signs for the written test",
+      "documents_required": [],
+      "time_estimate": "1-2 weeks"
+    },
+    {
+      "step_number": 3,
+      "title": "Take Written Test",
+      "description": "Pass the written examination on traffic rules and road safety",
+      "documents_required": ["Application form", "Documents"],
+      "time_estimate": "1 hour"
+    },
+    {
+      "step_number": 4,
+      "title": "Take Practical Test",
+      "description": "Pass the practical driving test with a licensed instructor",
+      "documents_required": [],
+      "time_estimate": "30 minutes"
+    },
+    {
+      "step_number": 5,
+      "title": "Pay Fees and Collect License",
+      "description": "Pay the license fee and collect your driving license",
+      "documents_required": ["Test certificates"],
+      "time_estimate": "30 minutes"
+    }
+  ],
+  "total_time": "2-3 weeks",
+  "fees": {
+    "license_fee": 300,
+    "test_fee": 100,
+    "currency": "Nu."
+  },
+  "offices": ["Road Safety and Transport Authority (RSTA) offices"],
+  "online_available": false,
+  "tips": [
+    "Study the official traffic manual thoroughly",
+    "Practice driving with a licensed driver",
+    "Take the test when you feel confident",
+    "Bring all original documents"
+  ],
+  "contact_info": {
+    "phone": "+975-2-323862",
+    "address": "RSTA, Thimphu, Bhutan",
+    "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+  }
+}

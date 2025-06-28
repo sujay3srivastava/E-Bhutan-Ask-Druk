@@ -1,0 +1,62 @@
+{
+  "id": "business_registration",
+  "service_name": "Business Registration",
+  "category": "Business",
+  "steps": [
+    {
+      "step_number": 1,
+      "title": "Choose Business Name",
+      "description": "Select a unique business name and check availability",
+      "documents_required": [],
+      "time_estimate": "1 day"
+    },
+    {
+      "step_number": 2,
+      "title": "Prepare Documents",
+      "description": "Gather citizenship ID, business plan, and location clearance",
+      "documents_required": ["Citizenship ID", "Business Plan", "Location Clearance", "2 passport photos"],
+      "time_estimate": "3-5 days"
+    },
+    {
+      "step_number": 3,
+      "title": "Submit Application",
+      "description": "Submit your business registration application to the Department of Trade",
+      "documents_required": ["All prepared documents"],
+      "time_estimate": "1 hour"
+    },
+    {
+      "step_number": 4,
+      "title": "Pay Registration Fees",
+      "description": "Pay the required business registration fees",
+      "documents_required": [],
+      "time_estimate": "30 minutes"
+    },
+    {
+      "step_number": 5,
+      "title": "Obtain Business License",
+      "description": "Collect your business license after approval",
+      "documents_required": ["Payment receipt"],
+      "time_estimate": "30 minutes"
+    }
+  ],
+  "total_time": "2-3 weeks",
+  "fees": {
+    "registration_fee": 1000,
+    "license_fee": 500,
+    "currency": "Nu."
+  },
+  "offices": ["Department of Trade, Ministry of Economic Affairs"],
+  "online_available": true,
+  "tips": [
+    "Check business name availability online first",
+    "Prepare a detailed business plan",
+    "Ensure your location has proper clearances",
+    "Consider tax implications early"
+  ],
+  "contact_info": {
+    "phone": "+975-2-322463",
+    "website": "www.moea.gov.bt",
+    "address": "Department of Trade, Thimphu",
+    "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+  }
+}

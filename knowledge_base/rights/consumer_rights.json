@@ -1,0 +1,81 @@
+{
+  "id": "consumer_rights",
+  "category": "Consumer Rights",
+  "scenarios": {
+    "defective_products": {
+      "scenario": "Purchased defective or faulty products",
+      "rights": [
+        "Right to return defective products",
+        "Right to refund or replacement",
+        "Right to compensation for damages",
+        "Right to safe and quality products"
+      ],
+      "relevant_laws": ["Consumer Protection Act 2012"],
+      "next_steps": [
+        "Keep receipt and warranty documents",
+        "Contact the seller first to resolve the issue",
+        "File complaint with Consumer Protection Office",
+        "Seek compensation if product caused damage"
+      ],
+      "simplified_explanation": "If you buy something that doesn't work or is broken, you can return it and get your money back or a replacement.",
+      "office_contact": {
+        "name": "Department of Consumer Protection",
+        "phone": "+975-2-323400",
+        "address": "Ministry of Economic Affairs, Thimphu",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    },
+    "overcharging": {
+      "scenario": "Being charged more than the actual price",
+      "rights": [
+        "Right to fair pricing",
+        "Right to know actual prices",
+        "Right to refuse overpriced goods",
+        "Right to file complaint against overcharging"
+      ],
+      "relevant_laws": ["Consumer Protection Act 2012"],
+      "next_steps": [
+        "Check official price lists or market rates",
+        "Request proper receipt with correct pricing",
+        "Report to Consumer Protection Office",
+        "File formal complaint if necessary"
+      ],
+      "simplified_explanation": "Sellers cannot charge you more than the fair price. If they do, you can complain and get help.",
+      "office_contact": {
+        "name": "Department of Consumer Protection",
+        "phone": "+975-2-323400",
+        "address": "Ministry of Economic Affairs, Thimphu",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    },
+    "poor_service": {
+      "scenario": "Receiving poor quality services",
+      "rights": [
+        "Right to quality services",
+        "Right to complain about poor service",
+        "Right to compensation for poor service",
+        "Right to choose service providers"
+      ],
+      "relevant_laws": ["Consumer Protection Act 2012"],
+      "next_steps": [
+        "Document the poor service experience",
+        "Complain directly to service provider first",
+        "File complaint with relevant regulatory body",
+        "Seek compensation if applicable"
+      ],
+      "simplified_explanation": "You deserve good service when you pay for it. If service is poor, you can complain and seek better treatment.",
+      "office_contact": {
+        "name": "Department of Consumer Protection",
+        "phone": "+975-2-323400",
+        "address": "Ministry of Economic Affairs, Thimphu",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    }
+  },
+  "general_info": {
+    "complaint_process": "File complaint within 2 years of purchase",
+    "documentation": "Keep receipts, warranties, and evidence",
+    "mediation": "Consumer Protection Office provides mediation services",
+    "consumer_court": "Escalate to consumer court if mediation fails"
+  }
+}

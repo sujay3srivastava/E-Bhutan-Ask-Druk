@@ -1,0 +1,81 @@
+{
+  "id": "employment_rights",
+  "category": "Employment Rights",
+  "scenarios": {
+    "unfair_dismissal": {
+      "scenario": "Unfair dismissal from job",
+      "rights": [
+        "Right to written notice (usually 1 month)",
+        "Right to severance pay if employed more than 1 year",
+        "Right to know the reason for dismissal",
+        "Right to appeal the decision"
+      ],
+      "relevant_laws": ["Labour Act 2007, Section 45"],
+      "next_steps": [
+        "Request a written termination letter from your employer",
+        "Contact Labour Ministry within 30 days",
+        "Gather all employment documents and contracts",
+        "File a formal complaint if dismissal was unfair"
+      ],
+      "simplified_explanation": "If you're fired without proper cause or procedure, you have legal rights and can take action to protect yourself.",
+      "office_contact": {
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
+        "address": "Thimphu, Bhutan",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    },
+    "salary_disputes": {
+      "scenario": "Employer not paying agreed salary",
+      "rights": [
+        "Right to receive agreed salary on time",
+        "Right to overtime payment for extra hours",
+        "Right to salary even during notice period",
+        "Right to final settlement upon leaving"
+      ],
+      "relevant_laws": ["Labour Act 2007, Section 32"],
+      "next_steps": [
+        "Keep records of work hours and salary agreements",
+        "Speak with your employer first to resolve the issue",
+        "File complaint with Labour Ministry if unresolved",
+        "Seek legal advice if necessary"
+      ],
+      "simplified_explanation": "Your employer must pay you the salary you agreed upon, on time. If they don't, you can get help to recover your money.",
+      "office_contact": {
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
+        "address": "Thimphu, Bhutan",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    },
+    "workplace_safety": {
+      "scenario": "Unsafe working conditions",
+      "rights": [
+        "Right to safe working environment",
+        "Right to safety equipment and training",
+        "Right to refuse dangerous work",
+        "Right to report safety violations"
+      ],
+      "relevant_laws": ["Labour Act 2007, Section 89"],
+      "next_steps": [
+        "Document unsafe conditions with photos if possible",
+        "Report to your supervisor or safety officer",
+        "Contact Labour Ministry if employer doesn't act",
+        "File formal safety complaint"
+      ],
+      "simplified_explanation": "You have the right to work in a safe environment. If your workplace is dangerous, you can refuse to work and get help.",
+      "office_contact": {
+        "name": "Ministry of Labour and Human Resources",
+        "phone": "+975-2-326915",
+        "address": "Thimphu, Bhutan",
+        "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+      }
+    }
+  },
+  "general_info": {
+    "working_hours": "Maximum 8 hours per day, 48 hours per week",
+    "minimum_wage": "Contact Labour Ministry for current rates",
+    "annual_leave": "Minimum 10 days per year after 1 year of service",
+    "sick_leave": "As per employment contract and company policy"
+  }
+}

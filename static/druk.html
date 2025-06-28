@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask Druk - Your Bhutanese AI Citizen Assistant</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #FF6B35 0%, #F7931E 25%, #FFD700 75%, #228B22 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #FF6B35;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .dragon-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.2rem;
+        }
+
+        .lang-selector {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #FF6B35;
+            background: white;
+            color: #FF6B35;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .lang-btn.active {
+            background: #FF6B35;
+            color: white;
+        }
+
+        .container {
+            flex: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            height: calc(100vh - 120px);
+        }
+
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 1.5rem;
+            height: fit-content;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .quick-services {
+            margin-bottom: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            width: 100%;
+            padding: 0.75rem;
+            background: #f8f9fa;
+            border: none;
+            border-radius: 12px;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .service-btn:hover {
+            background: #FF6B35;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .chat-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .chat-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .chat-subtitle {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        .messages {
+            flex: 1;
+            padding: 1.5rem;
+            overflow-y: auto;
+            background: #f8f9fa;
+        }
+
+        .message {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .user .message-avatar {
+            background: #007bff;
+            color: white;
+        }
+
+        .assistant .message-avatar {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+        }
+
+        .message-content {
+            background: white;
+            padding: 1rem 1.25rem;
+            border-radius: 18px;
+            max-width: 70%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            line-height: 1.5;
+        }
+
+        .user .message-content {
+            background: #007bff;
+            color: white;
+        }
+
+        .suggestions {
+            margin-top: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .suggestion-btn {
+            background: #e9f4ff;
+            border: 1px solid #007bff;
+            color: #007bff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .suggestion-btn:hover {
+            background: #007bff;
+            color: white;
+        }
+
+        .typing-indicator {
+            display: none;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: #FF6B35;
+            border-radius: 50%;
+            animation: typing 1.5s infinite;
+        }
+
+        .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+        .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
+        }
+
+        .input-container {
+            padding: 1.5rem;
+            background: white;
+            border-top: 1px solid #eee;
+            border-radius: 0 0 20px 20px;
+        }
+
+        .input-wrapper {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-end;
+        }
+
+        .input-field {
+            flex: 1;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+            resize: none;
+            outline: none;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+            min-height: 50px;
+            max-height: 150px;
+        }
+
+        .input-field:focus {
+            border-color: #FF6B35;
+        }
+
+        .send-btn {
+            background: linear-gradient(135deg, #FF6B35, #F7931E);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .send-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .welcome-message {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: #666;
+        }
+
+        .welcome-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #FF6B35, #F7931E);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .welcome-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .welcome-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .sample-questions {
+            display: grid;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .sample-question {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .sample-question:hover {
+            background: #FF6B35;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .emergency-contacts {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #fff3cd;
+            border-radius: 12px;
+            border-left: 4px solid #ffc107;
+        }
+
+        .emergency-title {
+            font-weight: bold;
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+
+        .emergency-list {
+            font-size: 0.9rem;
+            color: #856404;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+                height: auto;
+            }
+            
+            .sidebar {
+                order: 2;
+            }
+            
+            .chat-container {
+                height: 70vh;
+                order: 1;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="dragon-icon">🐉</div>
+                <div>
+                    <div class="title">Ask Druk</div>
+                    <div class="subtitle">Bhutan's AI Citizen Assistant</div>
+                </div>
+            </div>
+            <div class="lang-selector">
+                <button class="lang-btn active" data-lang="en">English</button>
+                <button class="lang-btn" data-lang="dz">འབྲུག་ཁ</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="quick-services">
+                <div class="section-title">
+                    🏛️ Popular Services
+                </div>
+                <button class="service-btn" data-service="passport">
+                    🛂 Passport Application
+                </button>
+                <button class="service-btn" data-service="license">
+                    🚗 Driving License
+                </button>
+                <button class="service-btn" data-service="business">
+                    💼 Business Registration
+                </button>
+                <button class="service-btn" data-service="birth">
+                    📄 Birth Certificate
+                </button>
+            </div>
+
+            <div class="rights-section">
+                <div class="section-title">
+                    ⚖️ Know Your Rights
+                </div>
+                <button class="service-btn" data-service="employment">
+                    👔 Employment Rights
+                </button>
+                <button class="service-btn" data-service="consumer">
+                    🛒 Consumer Rights
+                </button>
+                <button class="service-btn" data-service="tenant">
+                    🏠 Tenant Rights
+                </button>
+            </div>
+
+            <div class="emergency-contacts">
+                <div class="emergency-title">Emergency Contacts</div>
+                <div class="emergency-list">
+                    Police: 113<br>
+                    Fire: 110<br>
+                    Medical: 112<br>
+                    National Emergency: 111
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-container">
+            <div class="chat-header">
+                <div class="chat-title">🐉 Druk is here to help!</div>
+                <div class="chat-subtitle">Ask me about government services, your rights, or any questions about living in Bhutan</div>
+            </div>
+
+            <div class="messages" id="messages">
+                <div class="welcome-message">
+                    <div class="welcome-icon">🐉</div>
+                    <div class="welcome-title">Kuzuzangpo! Welcome to Ask Druk</div>
+                    <div class="welcome-description">
+                        I'm your friendly AI assistant for all things related to Bhutanese government services and citizen rights. 
+                        I'm here to help you navigate bureaucracy with simple, clear guidance in everyday language.
+                    </div>
+                    <div class="sample-questions">
+                        <div class="sample-question" data-question="How do I apply for a passport?">
+                            🛂 How do I apply for a passport?
+                        </div>
+                        <div class="sample-question" data-question="I was fired from my job without warning. What are my rights?">
+                            ⚖️ What are my employment rights?
+                        </div>
+                        <div class="sample-question" data-question="How do I start a small business in Bhutan?">
+                            💼 How do I register a business?
+                        </div>
+                        <div class="sample-question" data-question="Where is the nearest immigration office?">
+                            📍 Find government offices
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="typing-indicator" id="typingIndicator">
+                <div class="message-avatar assistant">🐉</div>
+                <div>
+                    Druk is thinking...
+                    <div class="typing-dots">
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                        <div class="typing-dot"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-container">
+                <div class="input-wrapper">
+                    <textarea 
+                        id="messageInput" 
+                        class="input-field" 
+                        placeholder="Ask me anything about government services or your rights..."
+                        rows="1"
+                    ></textarea>
+                    <button id="sendBtn" class="send-btn">
+                        ➤
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class DrukChatbot {
+            constructor() {
+                this.sessionId = this.generateSessionId();
+                this.messages = [];
+                this.isWelcomeShowing = true;
+                
+                this.initializeElements();
+                this.bindEvents();
+                this.initializeSession();
+            }
+            
+            generateSessionId() {
+                return 'session_' + Math.random().toString(36).substr(2, 9);
+            }
+            
+            initializeElements() {
+                this.messagesContainer = document.getElementById('messages');
+                this.messageInput = document.getElementById('messageInput');
+                this.sendBtn = document.getElementById('sendBtn');
+                this.typingIndicator = document.getElementById('typingIndicator');
+            }
+            
+            bindEvents() {
+                this.sendBtn.addEventListener('click', () => this.sendMessage());
+                this.messageInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+                
+                // Auto-resize textarea
+                this.messageInput.addEventListener('input', () => {
+                    this.messageInput.style.height = 'auto';
+                    this.messageInput.style.height = this.messageInput.scrollHeight + 'px';
+                });
+                
+                // Service buttons
+                document.querySelectorAll('.service-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const service = btn.dataset.service;
+                        this.handleServiceClick(service);
+                    });
+                });
+                
+                // Sample questions
+                document.querySelectorAll('.sample-question').forEach(question => {
+                    question.addEventListener('click', () => {
+                        const questionText = question.dataset.question;
+                        this.messageInput.value = questionText;
+                        this.sendMessage();
+                    });
+                });
+                
+                // Language selector
+                document.querySelectorAll('.lang-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        // Language switching logic would go here
+                    });
+                });
+            }
+            
+            async initializeSession() {
+                try {
+                    const response = await fetch('/initialize-session', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            session_id: this.sessionId,
+                            citizen_context: {
+                                language: 'English',
+                                location: 'Thimphu'
+                            }
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    console.log('Session initialized:', data);
+                } catch (error) {
+                    console.error('Error initializing session:', error);
+                }
+            }
+            
+            handleServiceClick(service) {
+                const serviceQuestions = {
+                    passport: "How do I apply for a passport?",
+                    license: "How do I get a driving license?",
+                    business: "How do I register a new business?",
+                    birth: "How do I get a birth certificate?",
+                    employment: "What are my employment rights?",
+                    consumer: "What are my consumer rights?",
+                    tenant: "What are my rights as a tenant?"
+                };
+                
+                const question = serviceQuestions[service];
+                if (question) {
+                    this.messageInput.value = question;
+                    this.sendMessage();
+                }
+            }
+            
+            async sendMessage() {
+                const message = this.messageInput.value.trim();
+                if (!message) return;
+                
+                // Clear welcome message if showing
+                if (this.isWelcomeShowing) {
+                    this.messagesContainer.innerHTML = '';
+                    this.isWelcomeShowing = false;
+                }
+                
+                // Add user message
+                this.addMessage(message, 'user');
+                this.messageInput.value = '';
+                this.messageInput.style.height = 'auto';
+                
+                // Show typing indicator
+                this.showTypingIndicator();
+                
+                // Disable send button
+                this.sendBtn.disabled = true;
+                
+                try {
+                    const response = await fetch('/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            session_id: this.sessionId,
+                            message: message
+                        })
+                    });
+                    
+                    const data = await response.json();
+                    
+                    // Hide typing indicator
+                    this.hideTypingIndicator();
+                    
+                    // Add assistant response
+                    this.addMessage(data.response, 'assistant');
+                    
+                    // Add suggested actions if available
+                    if (data.suggested_actions && data.suggested_actions.length > 0) {
+                        this.addSuggestions(data.suggested_actions);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    this.hideTypingIndicator();
+                    this.addMessage('I apologize, but I\'m having trouble responding right now. Please try again in a moment.', 'assistant');
+                } finally {
+                    this.sendBtn.disabled = false;
+                }
+            }
+            
+            addMessage(content, sender) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${sender}`;
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'message-avatar';
+                avatar.textContent = sender === 'user' ? '👤' : '🐉';
+                
+                const messageContent = document.createElement('div');
+                messageContent.className = 'message-content';
+                messageContent.innerHTML = this.formatMessage(content);
+                
+                messageDiv.appendChild(avatar);
+                messageDiv.appendChild(messageContent);
+                
+                this.messagesContainer.appendChild(messageDiv);
+                this.scrollToBottom();
+            }
+            
+            addSuggestions(suggestions) {
+                const suggestionsDiv = document.createElement('div');
+                suggestionsDiv.className = 'suggestions';
+                
+                suggestions.forEach(suggestion => {
+                    const btn = document.createElement('button');
+                    btn.className = 'suggestion-btn';
+                    btn.textContent = suggestion;
+                    btn.addEventListener('click', () => {
+                        this.messageInput.value = suggestion;
+                        this.sendMessage();
+                    });
+                    suggestionsDiv.appendChild(btn);
+                });
+                
+                const lastMessage = this.messagesContainer.lastElementChild;
+                const messageContent = lastMessage.querySelector('.message-content');
+                messageContent.appendChild(suggestionsDiv);
+            }
+            
+            formatMessage(content) {
+                // Convert line breaks to HTML
+                content = content.replace(/\n/g, '<br>');
+                
+                // Format bullet points
+                content = content.replace(/^• (.+)$/gm, '<br>• $1');
+                content = content.replace(/^\* (.+)$/gm, '<br>• $1');
+                
+                // Format numbered lists
+                content = content.replace(/^(\d+)\. (.+)$/gm, '<br>$1. $2');
+                
+                return content;
+            }
+            
+            showTypingIndicator() {
+                this.typingIndicator.style.display = 'flex';
+                this.scrollToBottom();
+            }
+            
+            hideTypingIndicator() {
+                this.typingIndicator.style.display = 'none';
+            }
+            
+            scrollToBottom() {
+                setTimeout(() => {
+                    this.messagesContainer.scrollTop = this.messagesContainer.scrollHeight;
+                }, 100);
+            }
+        }
+        
+        // Initialize the chatbot when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            new DrukChatbot();
+        });
+    </script>
+</body>
+</html>

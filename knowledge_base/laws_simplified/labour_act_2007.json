@@ -1,0 +1,48 @@
+{
+  "id": "labour_act_2007",
+  "law_name": "Labour Act 2007",
+  "purpose": "This law protects workers and defines the relationship between employers and employees in Bhutan",
+  "key_sections": {
+    "working_hours": {
+      "section": "Section 15",
+      "simple_explanation": "You cannot be made to work more than 8 hours a day or 48 hours a week without overtime pay",
+      "details": "Normal working hours are 8 hours per day and 48 hours per week. If you work more, your employer must pay you extra (overtime)."
+    },
+    "termination": {
+      "section": "Section 45",
+      "simple_explanation": "Your employer cannot fire you without good reason and proper notice",
+      "details": "If your employer wants to fire you, they must have a valid reason and give you proper notice (usually 1 month). They must follow the correct procedure."
+    },
+    "salary_payment": {
+      "section": "Section 32",
+      "simple_explanation": "Your employer must pay your agreed salary on time every month",
+      "details": "Your salary must be paid regularly as agreed in your contract. Your employer cannot delay or reduce your salary without valid reasons."
+    },
+    "workplace_safety": {
+      "section": "Section 89",
+      "simple_explanation": "Your workplace must be safe and your employer must provide safety equipment",
+      "details": "Your employer must ensure your workplace is safe and provide necessary safety equipment and training. You have the right to refuse dangerous work."
+    },
+    "annual_leave": {
+      "section": "Section 40",
+      "simple_explanation": "You are entitled to paid vacation days every year",
+      "details": "After working for one year, you get at least 10 days of paid annual leave. This increases with years of service."
+    }
+  },
+  "common_violations": [
+    "Not paying salary on time",
+    "Making employees work excessive hours without overtime pay",
+    "Firing employees without proper notice or reason",
+    "Not providing safe working conditions",
+    "Not giving entitled leave days"
+  ],
+  "how_to_get_help": {
+    "first_step": "Try to resolve the issue with your employer directly",
+    "second_step": "Contact the Ministry of Labour and Human Resources",
+    "contact": {
+      "phone": "+975-2-326915",
+      "address": "Ministry of Labour and Human Resources, Thimphu",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)"
+    }
+  }
+}

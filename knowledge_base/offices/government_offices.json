@@ -1,0 +1,123 @@
+{
+  "offices": [
+    {
+      "name": "Immigration Office",
+      "services": ["passport", "visa", "work_permit", "residence_permit"],
+      "address": "Kawangjangsa, Thimphu, Bhutan",
+      "contact": "+975-2-322526",
+      "email": "immigration@mofa.gov.bt",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
+      "dzongkhag": "Thimphu",
+      "coordinates": {
+        "latitude": "27.4712",
+        "longitude": "89.6339"
+      },
+      "services_details": {
+        "passport": "Regular and urgent passport services",
+        "visa": "Tourist and business visa processing",
+        "work_permit": "Work permit applications for foreign nationals",
+        "residence_permit": "Residence permit for long-term stays"
+      }
+    },
+    {
+      "name": "Road Safety and Transport Authority (RSTA)",
+      "services": ["driving_license", "vehicle_registration", "road_permits"],
+      "address": "Lungtenphu, Thimphu, Bhutan",
+      "contact": "+975-2-323862",
+      "email": "info@rsta.gov.bt",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
+      "dzongkhag": "Thimphu",
+      "coordinates": {
+        "latitude": "27.4784",
+        "longitude": "89.6319"
+      },
+      "services_details": {
+        "driving_license": "Written and practical driving tests, license issuance",
+        "vehicle_registration": "New vehicle registration and renewals",
+        "road_permits": "Permits for road construction and maintenance"
+      }
+    },
+    {
+      "name": "Ministry of Labour and Human Resources",
+      "services": ["employment_disputes", "work_permits", "labour_complaints"],
+      "address": "Kawangjangsa, Thimphu, Bhutan",
+      "contact": "+975-2-326915",
+      "email": "info@molhr.gov.bt",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
+      "dzongkhag": "Thimphu",
+      "coordinates": {
+        "latitude": "27.4712",
+        "longitude": "89.6339"
+      },
+      "services_details": {
+        "employment_disputes": "Mediation and resolution of workplace conflicts",
+        "work_permits": "Work permit processing for citizens and foreigners",
+        "labour_complaints": "Filing and investigating labour law violations"
+      }
+    },
+    {
+      "name": "Department of Trade",
+      "services": ["business_registration", "trade_licenses", "import_export"],
+      "address": "Ministry of Economic Affairs, Thimphu",
+      "contact": "+975-2-322463",
+      "email": "trade@moea.gov.bt",
+      "website": "www.moea.gov.bt",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
+      "dzongkhag": "Thimphu",
+      "coordinates": {
+        "latitude": "27.4712",
+        "longitude": "89.6339"
+      },
+      "services_details": {
+        "business_registration": "New business registration and renewals",
+        "trade_licenses": "Various trade and commercial licenses",
+        "import_export": "Import and export permit processing"
+      }
+    },
+    {
+      "name": "Civil Registration Office",
+      "services": ["birth_certificate", "death_certificate", "marriage_certificate"],
+      "address": "Department of Civil Registration, Thimphu",
+      "contact": "+975-2-323856",
+      "email": "dcr@moha.gov.bt",
+      "hours": "9:00 AM - 5:00 PM (Monday-Friday)",
+      "dzongkhag": "Thimphu",
+      "coordinates": {
+        "latitude": "27.4712",
+        "longitude": "89.6339"
+      },
+      "services_details": {
+        "birth_certificate": "Birth registration and certificate issuance",
+        "death_certificate": "Death registration and certificate issuance",
+        "marriage_certificate": "Marriage registration and certificate issuance"
+      }
+    }
+  ],
+  "emergency_contacts": [
+    {
+      "service": "Police",
+      "number": "113",
+      "available": "24/7"
+    },
+    {
+      "service": "Fire Department",
+      "number": "110",
+      "available": "24/7"
+    },
+    {
+      "service": "Medical Emergency",
+      "number": "112",
+      "available": "24/7"
+    },
+    {
+      "service": "National Emergency",
+      "number": "111",
+      "available": "24/7"
+    },
+    {
+      "service": "Tourist Helpline",
+      "number": "+975-2-323251",
+      "available": "Office hours"
+    }
+  ]
+}
