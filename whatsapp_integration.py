@@ -54,21 +54,48 @@ def generate_session_id(phone_number: str) -> str:
 
 def format_response_for_whatsapp(response_text: str, suggested_actions: Optional[list] = None) -> str:
     """Format the bot response for WhatsApp"""
-    # WhatsApp has a 1600 character limit per message
-    MAX_LENGTH = 1500
+    # WhatsApp Business API allows up to 4096 characters, but keep it readable
+    MAX_LENGTH = 4000
     
-    # Truncate if too long
-    if len(response_text) > MAX_LENGTH:
-        response_text = response_text[:MAX_LENGTH] + "...\n\n📱 Type 'more' for additional details."
-    
-    # Add suggested actions if available
+    # First, add suggested actions if available
     if suggested_actions:
         action_text = "\n\n*Quick Actions:*\n"
-        for i, action in enumerate(suggested_actions[:3], 1):  # Limit to 3 actions
+        for i, action in enumerate(suggested_actions[:5], 1):  # Allow up to 5 actions
             action_text += f"{i}. {action}\n"
         
+        # Only add actions if total length doesn't exceed limit
         if len(response_text + action_text) <= MAX_LENGTH:
             response_text += action_text
+        else:
+            # If adding actions would exceed limit, add fewer actions
+            action_text = "\n\n*Quick Actions:*\n"
+            for i, action in enumerate(suggested_actions[:2], 1):  # Try with just 2 actions
+                action_text += f"{i}. {action}\n"
+            
+            if len(response_text + action_text) <= MAX_LENGTH:
+                response_text += action_text
+    
+    # Only truncate if still too long after trying to add actions
+    if len(response_text) > MAX_LENGTH:
+        # Find a good place to cut (try to cut at sentence end)
+        truncate_at = MAX_LENGTH - 100  # Leave room for continuation message
+        
+        # Try to find last sentence ending
+        last_period = response_text.rfind('.', 0, truncate_at)
+        last_exclamation = response_text.rfind('!', 0, truncate_at)
+        last_question = response_text.rfind('?', 0, truncate_at)
+        
+        cut_point = max(last_period, last_exclamation, last_question)
+        
+        if cut_point > truncate_at - 200:  # If we found a good sentence ending
+            response_text = response_text[:cut_point + 1] + "\n\n📱 *Type 'more' for additional details.*"
+        else:
+            # Cut at word boundary
+            last_space = response_text.rfind(' ', 0, truncate_at)
+            if last_space > truncate_at - 50:
+                response_text = response_text[:last_space] + "...\n\n📱 *Type 'more' for additional details.*"
+            else:
+                response_text = response_text[:truncate_at] + "...\n\n📱 *Type 'more' for additional details.*"
     
     return response_text
 
@@ -179,6 +206,25 @@ async def process_whatsapp_message(from_number: str, message_body: str, profile_
 • Consumer Rights
 
 Type the service name for detailed guide!"""
+        
+        if message_lower == 'more':
+            return """📋 *Need More Information?*
+
+I can provide detailed guidance on:
+
+• **Government Services** - Step-by-step procedures
+• **Required Documents** - What you need to bring
+• **Office Locations** - Where to go in your dzongkhag
+• **Fees & Timeline** - Costs and processing time
+• **Your Rights** - What protections you have
+
+*Examples of detailed questions:*
+• "What documents do I need for passport?"
+• "Where is immigration office in Thimphu?"
+• "What are my rights if fired from job?"
+• "How much does driving license cost?"
+
+Ask me anything specific! 😊"""
         
         # Store session info
         if session_id not in whatsapp_sessions:
