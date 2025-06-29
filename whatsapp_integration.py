@@ -125,28 +125,36 @@ Type *help* anytime for more options."""
 
 def get_help_message() -> str:
     """Get help message"""
-    return """🔍 *Ask Druk Help Menu*
+    return """🔍 *Ask Druk Help*
 
-*Available Commands:*
-• *help* - Show this menu
-• *services* - List all services
-• *emergency* - Emergency contacts
-• *offices* - Find government offices
-• *rights* - Know your rights
+*I'm powered by AI and can answer ANY question about:*
 
-*Service Categories:*
-• Travel Documents (passport, visa)
-• Business (registration, permits)
-• Legal Rights (employment, consumer)
-• Civil Documents (birth, marriage)
-• Property (land registration)
+🏢 **Government Services**
+• Passport & visa applications
+• Driving licenses
+• Business registration
+• Birth/marriage certificates
+• Work permits
+• Land registration
 
-*Tips:*
-• Be specific in your questions
-• Mention your location for office info
-• Type 'more' for detailed information
+⚖️ **Your Rights**
+• Employment rights
+• Consumer protection
+• Legal procedures
 
-Just type your question naturally! 😊"""
+🏛️ **Office Information**
+• Locations and contacts
+• Required documents
+• Fees and timelines
+• Emergency contacts
+
+*Just ask me naturally:*
+• "How to get visa to Singapore?"
+• "What documents for passport?"
+• "Emergency contacts please"
+• "Where is immigration office?"
+
+I understand your questions and provide detailed answers! 😊"""
 
 async def process_whatsapp_message(from_number: str, message_body: str, profile_name: str = None) -> str:
     """Process incoming WhatsApp message and return response"""
@@ -158,73 +166,16 @@ async def process_whatsapp_message(from_number: str, message_body: str, profile_
         # Generate session ID
         session_id = generate_session_id(from_number)
         
-        # Handle special commands
+        # Handle ONLY basic greeting commands, everything else goes to RAG
         message_lower = message_body.lower().strip()
         
+        # Basic greetings - show welcome message
         if message_lower in ['hi', 'hello', 'start', 'kuzuzangpo']:
             return get_welcome_message()
         
+        # Help command - show available options
         if message_lower == 'help':
             return get_help_message()
-        
-        if message_lower == 'emergency':
-            return """🚨 *Emergency Contacts - Bhutan*
-
-• *Police:* 113
-• *Fire Department:* 110  
-• *Medical Emergency:* 112
-• *National Emergency:* 111
-• *Tourist Helpline:* +975-2-323251
-
-*Available 24/7 except Tourist Helpline*"""
-        
-        if message_lower == 'services':
-            return """🏛️ *Government Services*
-
-*Travel Documents:*
-• Passport Application
-• Visa Services
-• Work Permits
-
-*Business:*
-• Business Registration
-• Trade License
-• Tax Registration
-
-*Civil Documents:*
-• Birth Certificate
-• Marriage Certificate
-• Death Certificate
-
-*Transportation:*
-• Driving License
-• Vehicle Registration
-
-*Others:*
-• Land Registration
-• Employment Rights
-• Consumer Rights
-
-Type the service name for detailed guide!"""
-        
-        if message_lower == 'more':
-            return """📋 *Need More Information?*
-
-I can provide detailed guidance on:
-
-• **Government Services** - Step-by-step procedures
-• **Required Documents** - What you need to bring
-• **Office Locations** - Where to go in your dzongkhag
-• **Fees & Timeline** - Costs and processing time
-• **Your Rights** - What protections you have
-
-*Examples of detailed questions:*
-• "What documents do I need for passport?"
-• "Where is immigration office in Thimphu?"
-• "What are my rights if fired from job?"
-• "How much does driving license cost?"
-
-Ask me anything specific! 😊"""
         
         # Store session info
         if session_id not in whatsapp_sessions:
@@ -244,7 +195,7 @@ Ask me anything specific! 😊"""
                 "platform": "whatsapp",
                 "phone_number": from_number,
                 "profile_name": profile_name,
-                "preferred_language": "english"  # Default, could be detected
+                "preferred_language": "english"
             }
             
             init_request = InitSessionRequest(
@@ -253,7 +204,8 @@ Ask me anything specific! 😊"""
             )
             await initialize_session(init_request)
         
-        # Process message with Ask Druk
+        # ALL other messages (including emergency, services, visa questions, etc.) 
+        # go through the RAG system for intelligent responses
         chat_request = ChatRequest(
             session_id=session_id,
             message=message_body
