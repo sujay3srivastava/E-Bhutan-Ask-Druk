@@ -711,11 +711,20 @@
                 // Sample questions
                 document.querySelectorAll('.sample-question').forEach(question => {
                     question.addEventListener('click', () => {
-                        const questionText = this.currentLanguage === 'en' 
+                        const englishQuestion = question.dataset.questionEn;
+                        const displayQuestion = this.currentLanguage === 'en' 
                             ? question.dataset.questionEn 
                             : question.dataset.questionDz;
-                        this.messageInput.value = questionText;
-                        this.sendMessage();
+                        
+                        this.messageInput.value = displayQuestion;
+                        
+                        if (this.currentLanguage === 'dz') {
+                            // Send English for processing but show Dzongkha to user
+                            this.sendMessageWithTranslation(englishQuestion, displayQuestion);
+                        } else {
+                            // English mode - send as normal
+                            this.sendMessage();
+                        }
                     });
                 });
                 
@@ -787,12 +796,21 @@
             }
             
             handleServiceClick(service) {
-                const lang = languages[this.currentLanguage];
-                const question = lang.questions[service];
+                // Always use English questions for processing, but display in current language
+                const englishQuestion = languages.en.questions[service];
+                const displayQuestion = languages[this.currentLanguage].questions[service];
                 
-                if (question) {
-                    this.messageInput.value = question;
-                    this.sendMessage();
+                if (englishQuestion) {
+                    // Show the localized question in the input
+                    this.messageInput.value = displayQuestion;
+                    
+                    if (this.currentLanguage === 'dz') {
+                        // Dzongkha mode: send English for processing, request Dzongkha response
+                        this.sendMessageWithTranslation(englishQuestion, displayQuestion);
+                    } else {
+                        // English mode: send as normal
+                        this.sendMessage();
+                    }
                 }
             }
             
@@ -800,6 +818,91 @@
                 const message = this.messageInput.value.trim();
                 if (!message) return;
                 
+                // In Dzongkha mode, handle translation differently
+                if (this.currentLanguage === 'dz') {
+                    // For manual input in Dzongkha mode, send as English for processing
+                    // but request Dzongkha response
+                    await this.sendMessageWithTranslation(message, message);
+                } else {
+                    // English mode - send as normal
+                    await this.sendRegularMessage(message);
+                }
+            }
+            
+            async sendMessageWithTranslation(englishMessage, displayMessage) {
+                // Clear welcome message if showing
+                if (this.isWelcomeShowing) {
+                    this.messagesContainer.innerHTML = '';
+                    this.isWelcomeShowing = false;
+                }
+                
+                // Add user message (show the display version)
+                this.addMessage(displayMessage, 'user');
+                this.messageInput.value = '';
+                this.messageInput.style.height = 'auto';
+                
+                // Show typing indicator
+                this.showTypingIndicator();
+                
+                // Disable send button
+                this.sendBtn.disabled = true;
+                
+                try {
+                    // Step 1: Get English response from RAG system
+                    const chatResponse = await fetch('/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            session_id: this.sessionId,
+                            message: englishMessage,  // Send clean English message
+                            language: 'en'  // Process as English
+                        })
+                    });
+                    
+                    const chatData = await chatResponse.json();
+                    
+                    // Step 2: Translate the English response to Dzongkha
+                    const translationResponse = await fetch('/translate', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            text: chatData.response,
+                            target_language: 'dzongkha'
+                        })
+                    });
+                    
+                    const translationData = await translationResponse.json();
+                    
+                    // Hide typing indicator
+                    this.hideTypingIndicator();
+                    
+                    // Add translated response
+                    const finalResponse = translationData.status === 'success' 
+                        ? translationData.translated_text 
+                        : chatData.response;  // Fallback to English if translation fails
+                    
+                    this.addMessage(finalResponse, 'assistant');
+                    
+                    // Add suggested actions if available (translate them too if needed)
+                    if (chatData.suggested_actions && chatData.suggested_actions.length > 0) {
+                        this.addSuggestions(chatData.suggested_actions);
+                    }
+                    
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                    this.hideTypingIndicator();
+                    const errorMessage = 'སྐུ་དགོངས་སེལ་ཞུ། ད་ལྟ་ལན་འདེབས་ནང་དཀའ་ངལ་ཡོད་པ་འདྲ། ཏོག་ཙམ་སྒུག་སྟེ་ཡང་བསྐྱར་ཚོད་ལྟ་གནང་རོགས།';
+                    this.addMessage(errorMessage, 'assistant');
+                } finally {
+                    this.sendBtn.disabled = false;
+                }
+            }
+            
+            async sendRegularMessage(message) {
                 // Clear welcome message if showing
                 if (this.isWelcomeShowing) {
                     this.messagesContainer.innerHTML = '';
@@ -818,11 +921,6 @@
                 this.sendBtn.disabled = true;
                 
                 try {
-                    // Add language preference to the message
-                    const enhancedMessage = this.currentLanguage === 'dz' 
-                        ? `Please respond in Dzongkha script: ${message}`
-                        : message;
-                    
                     const response = await fetch('/chat', {
                         method: 'POST',
                         headers: {
@@ -830,7 +928,7 @@
                         },
                         body: JSON.stringify({
                             session_id: this.sessionId,
-                            message: enhancedMessage,
+                            message: message,
                             language: this.currentLanguage
                         })
                     });
@@ -851,9 +949,7 @@
                 } catch (error) {
                     console.error('Error sending message:', error);
                     this.hideTypingIndicator();
-                    const errorMessage = this.currentLanguage === 'en' 
-                        ? 'I apologize, but I\'m having trouble responding right now. Please try again in a moment.'
-                        : 'སྐུ་དགོངས་སེལ་ཞུ། ད་ལྟ་ལན་འདེབས་ནང་དཀའ་ངལ་ཡོད་པ་འདྲ། ཏོག་ཙམ་སྒུག་སྟེ་ཡང་བསྐྱར་ཚོད་ལྟ་གནང་རོགས།';
+                    const errorMessage = 'I apologize, but I\'m having trouble responding right now. Please try again in a moment.';
                     this.addMessage(errorMessage, 'assistant');
                 } finally {
                     this.sendBtn.disabled = false;

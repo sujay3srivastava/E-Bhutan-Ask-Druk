@@ -77,6 +77,7 @@ class ChatRequest(BaseModel):
     session_id: str
     message: str
     query_type: Optional[str] = None  # rights_inquiry, service_guide, etc.
+    language: Optional[str] = "en"
 
 class ChatResponse(BaseModel):
     session_id: str
@@ -102,6 +103,10 @@ class QuickGuideRequest(BaseModel):
 class RightsCheckRequest(BaseModel):
     scenario: str
     category: str  # employment, consumer, tenant, etc.
+
+class TranslationRequest(BaseModel):
+    text: str
+    target_language: str = "dzongkha"
 
 @app.on_event("startup")
 async def startup_event():
@@ -307,6 +312,65 @@ async def get_emergency_contacts():
             {"service": "Tourist Helpline", "number": "+975-2-323251", "available": "Office hours"}
         ]
     }
+
+@app.post("/translate")
+async def translate_text(request: TranslationRequest):
+    """Translate English text to Dzongkha using vanilla chat completion"""
+    try:
+        from openai import AzureOpenAI
+        
+        # Initialize Azure OpenAI client
+        client = AzureOpenAI(
+            api_key=api_key,
+            api_version=api_version,
+            azure_endpoint=azure_endpoint
+        )
+        
+        # Create translation prompt
+        translation_prompt = f"""You are a professional translator specializing in English to Dzongkha translation.
+
+Please translate the following English text to Dzongkha script. Maintain the original structure, formatting, and meaning:
+
+{request.text}
+
+Important guidelines:
+- Use proper Dzongkha script (འབྲུག་ཁ)
+- Preserve any formatting like bullet points, numbers, headers
+- Keep technical terms clear and understandable
+- Maintain the helpful and respectful tone
+- If certain English terms don't have direct Dzongkha equivalents, you may keep them in English within the Dzongkha text
+
+Translation:"""
+        
+        # Get translation from Azure OpenAI
+        response = client.chat.completions.create(
+            model="gpt-4.1-mini",  # or your deployed model name
+            messages=[
+                {"role": "system", "content": "You are a professional English to Dzongkha translator. Provide accurate, culturally appropriate translations."},
+                {"role": "user", "content": translation_prompt}
+            ],
+            temperature=0.3,
+            max_tokens=20000
+        )
+        
+        translated_text = response.choices[0].message.content.strip()
+        
+        return {
+            "original_text": request.text,
+            "translated_text": translated_text,
+            "target_language": request.target_language,
+            "status": "success"
+        }
+        
+    except Exception as e:
+        logging.error(f"Translation error: {str(e)}")
+        return {
+            "original_text": request.text,
+            "translated_text": request.text,  # Return original text if translation fails
+            "target_language": request.target_language,
+            "status": "error",
+            "error_message": "Translation service temporarily unavailable"
+        }
 
 # WhatsApp Integration Endpoints
 @app.post("/webhook/whatsapp")

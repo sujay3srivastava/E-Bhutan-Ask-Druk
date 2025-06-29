@@ -11,7 +11,7 @@ from typing import List, Optional, Dict, Any, Tuple
 from llama_index.core import VectorStoreIndex, Document, Settings
 from llama_index.llms.azure_openai import AzureOpenAI
 from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
-from llama_index.core.chat_engine import CondensePlusContextChatEngine
+from llamaindexchatengine import CondensePlusContextChatEngine
 from llama_index.core.memory import ChatMemoryBuffer
 from document_loader import DocumentLoader
 from druk_system_prompt import DRUK_SYSTEM_PROMPT
