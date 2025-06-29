@@ -1,4 +1,4 @@
-# 🇧🇹 Ask Druk - Bhutan's Sovereign AI Citizen Assistant
+# 🇧🇹 Ask Druk🐉- Bhutan's Sovereign AI Citizen Assistant
 
 <div align="center">
   
@@ -12,6 +12,37 @@
 </div>
 
 ---
+
+## 📸 Platform Screenshots
+
+### Web Interface
+
+<div align="center">
+<h3>🌐 Ask Druk Web Application</h3>
+<img src="Screenshots/Web_Screenshot.png" alt="Ask Druk Web Interface" width="800"/>
+<br>
+<em>Full-featured web interface with comprehensive government services access</em>
+</div>
+
+### Multi-Platform Integration
+
+<table>
+<tr>
+<td align="center">
+<h3>📱 WhatsApp Chatbot Interface</h3>
+<img src="Screenshots/Whatsapp_Screenshot1.jpeg" alt="WhatsApp Chatbot Interface" width="300"/>
+<br>
+<em>AI-powered responses with suggested actions via WhatsApp</em>
+</td>
+<td align="center">
+<h3>💬 WhatsApp Live Conversation</h3>
+<img src="Screenshots/Whatsapp welcome.jpeg" alt="WhatsApp Live Chat" width="300"/>
+<br>
+<em>Real citizen conversations with instant government guidance</em>
+</td>
+</tr>
+</table>
+
 
 ## 🌟 The Problem
 
@@ -64,7 +95,7 @@ Ask Druk: "Kuzuzangpo! I'll guide you through business registration. You'll need
 
 ### 🌐 Multi-Platform Accessibility
 - **Web Interface**: Full-featured chat at [askdruk.ravvio.in](https://askdruk.ravvio.in)
-- **WhatsApp Integration**: Chat via WhatsApp at +1 415 523 8886
+- **WhatsApp Integration**: Chat via WhatsApp at +91 822 084 5103
 - **Mobile Responsive**: Works seamlessly on all devices
 
 ## 🚀 Live Demo & Access
@@ -73,7 +104,7 @@ Ask Druk: "Kuzuzangpo! I'll guide you through business registration. You'll need
 Visit: **[askdruk.ravvio.in](https://askdruk.ravvio.in)**
 
 ### 📱 **WhatsApp Bot**
-Text: **+1 415 523 8886**
+Text: **+91 822 084 5103**
 1. Send `join ask-druk-bhutan` to join
 2. Start chatting with Ask Druk instantly!
 
@@ -104,35 +135,6 @@ Text: **+1 415 523 8886**
    "emergency contacts" or "I need police help"
    ```
 
-## 📸 Platform Screenshots
-
-### Multi-Platform Integration
-
-<table>
-<tr>
-<td align="center">
-<h3>📱 WhatsApp Chatbot Interface</h3>
-<img src="Screenshots/Whatsapp_Screenshot1.jpeg" alt="WhatsApp Chatbot Interface" width="300"/>
-<br>
-<em>AI-powered responses with suggested actions via WhatsApp</em>
-</td>
-<td align="center">
-<h3>💬 WhatsApp Live Conversation</h3>
-<img src="Screenshots/Whatsapp welcome.jpeg" alt="WhatsApp Live Chat" width="300"/>
-<br>
-<em>Real citizen conversations with instant government guidance</em>
-</td>
-</tr>
-</table>
-
-### Web Interface
-
-<div align="center">
-<h3>🌐 Ask Druk Web Application</h3>
-<img src="Screenshots/Web_Screenshot.png" alt="Ask Druk Web Interface" width="800"/>
-<br>
-<em>Full-featured web interface with comprehensive government services access</em>
-</div>
 
 ## 🛠️ Technology Stack
 
@@ -316,12 +318,9 @@ python application.py
 We welcome contributions from developers, government officials, and citizens!
 
 ### **Areas for Contribution:**
-- 🌐 **Dzongkha NLP** - Native language processing
-- 📱 **Mobile App** - Native iOS/Android applications  
+- 🌐 **Dzongkha NLP** - Native language processing and Fine-tuning for Dzongkha capabilities
 - 🗣️ **Voice Interface** - Speech recognition and synthesis
-- 📊 **Analytics** - Usage insights and optimization
-- 🧪 **Testing** - Quality assurance and bug reports
-- 📝 **Documentation** - User guides and API docs
+- 📊 **Analytics** - Usage insights and optimizations
 
 ### **Development Guidelines:**
 - Follow Python PEP 8 style guidelines
@@ -332,39 +331,30 @@ We welcome contributions from developers, government officials, and citizens!
 ## 👥 Team & Credits
 
 **Lead Developer & AI Engineer:**
-- **Sujay Srivastava** - Full Stack Development, AI Implementation, System Architecture
-
+- **Sujay Srivastava** - [LinkedIn](https:linkedin.com/in/sujaysriv) , [Github](https://github.com/sujay3srivastava)
 **Special Thanks:**
-- Royal Government of Bhutan for guidance and support
-- Ministry of Information and Communications
-- Bhutanese citizens who provided testing and feedback
+- Fellow Hackers at Draper Startup House for guidance and support
 - Open source community for foundational technologies
 
 ## 📞 Contact & Support
 
 - **Live Demo**: [askdruk.ravvio.in](https://askdruk.ravvio.in)
-- **WhatsApp Bot**: +1 415 523 8886
+- **WhatsApp Bot**: +91 822 084 5103
 - **Email**: sujay@ravvio.in
 - **GitHub**: [Repository Issues](https://github.com/sujay-ravvio/ask-druk/issues)
 - **Documentation**: Comprehensive API docs at `/docs` endpoint
 
 ## 📜 License & Legal
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file for details.
+This project is licensed under the Creative Commons Legal Code CC0 1.0 Universal - see [LICENSE](LICENSE) file for details.
 
-**Compliance & Privacy:**
-- GDPR compliant data handling
-- Secure API key management
-- No permanent storage of personal conversations
-- Government-grade security standards
+
 
 ## 🙏 Acknowledgments
 
-- **His Majesty's Government of Bhutan** for vision and support
-- **Bhutan Innovation and Technology Centre** for infrastructure
+- **Draper Startup House** for hosting the hackathon
 - **Citizens of Bhutan** for feedback and testing
 - **Azure OpenAI** for AI capabilities
-- **Twilio** for WhatsApp Business API
 - **Open Source Community** for foundational technologies
 
 ---
