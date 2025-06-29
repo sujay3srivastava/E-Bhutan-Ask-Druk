@@ -19,6 +19,13 @@
             flex-direction: column;
         }
 
+        /* Dzongkha font support */
+        .dzongkha {
+            font-family: 'Noto Sans Tibetan', 'Microsoft Himalaya', 'Jomolhari', 'DDC Uchen', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
         .header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
@@ -425,6 +432,32 @@
                 text-align: center;
             }
         }
+
+        /* Dzongkha-specific styling */
+        body.dzongkha-mode .dzongkha {
+            display: block;
+        }
+        
+        body.dzongkha-mode .english {
+            display: none;
+        }
+        
+        body:not(.dzongkha-mode) .dzongkha {
+            display: none;
+        }
+        
+        body:not(.dzongkha-mode) .english {
+            display: block;
+        }
+
+        /* Language transition animations */
+        .lang-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .lang-transition.fade-out {
+            opacity: 0;
+        }
     </style>
 </head>
 <body>
@@ -433,8 +466,14 @@
             <div class="logo">
                 <div class="dragon-icon">🐉</div>
                 <div>
-                    <div class="title">Ask Druk</div>
-                    <div class="subtitle">Bhutan's AI Citizen Assistant</div>
+                    <div class="title">
+                        <span class="english">Ask Druk</span>
+                        <span class="dzongkha">འདྲི་འབྲུག</span>
+                    </div>
+                    <div class="subtitle">
+                        <span class="english">Bhutan's AI Citizen Assistant</span>
+                        <span class="dzongkha">འབྲུག་གི་རྒྱལ་ཁབ་སྤྱི་མཐུན་གི་ཀླད་པ་རིག་ནུས་རོགས་པ།</span>
+                    </div>
                 </div>
             </div>
             <div class="lang-selector">
@@ -448,75 +487,115 @@
         <div class="sidebar">
             <div class="quick-services">
                 <div class="section-title">
-                    🏛️ Popular Services
+                    <span class="english">🏛️ Popular Services</span>
+                    <span class="dzongkha">🏛️ སྤྱོད་མང་བའི་ཞབས་ཏོག</span>
                 </div>
                 <button class="service-btn" data-service="passport">
-                    🛂 Passport Application
+                    <span class="english">🛂 Passport Application</span>
+                    <span class="dzongkha">🛂 འགྲོ་བའི་ལག་ཁྱེར་གསུ་ཞུ</span>
                 </button>
                 <button class="service-btn" data-service="license">
-                    🚗 Driving License
+                    <span class="english">🚗 Driving License</span>
+                    <span class="dzongkha">🚗 གཏང་ཆོག་ཆིག་མཐུན</span>
                 </button>
                 <button class="service-btn" data-service="business">
-                    💼 Business Registration
+                    <span class="english">💼 Business Registration</span>
+                    <span class="dzongkha">💼 ཚོང་ལས་ཐོ་བཀོད</span>
                 </button>
                 <button class="service-btn" data-service="birth">
-                    📄 Birth Certificate
+                    <span class="english">📄 Birth Certificate</span>
+                    <span class="dzongkha">📄 སྐྱེ་བའི་ཡིག་ཆ</span>
                 </button>
             </div>
 
             <div class="rights-section">
                 <div class="section-title">
-                    ⚖️ Know Your Rights
+                    <span class="english">⚖️ Know Your Rights</span>
+                    <span class="dzongkha">⚖️ ཁྱེད་རང་གི་ཐོབ་ཐང་ཤེས་རོགས</span>
                 </div>
                 <button class="service-btn" data-service="employment">
-                    👔 Employment Rights
+                    <span class="english">👔 Employment Rights</span>
+                    <span class="dzongkha">👔 ལས་ཀའི་ཐོབ་ཐང</span>
                 </button>
                 <button class="service-btn" data-service="consumer">
-                    🛒 Consumer Rights
+                    <span class="english">🛒 Consumer Rights</span>
+                    <span class="dzongkha">🛒 ཉོ་མཁན་གྱི་ཐོབ་ཐང</span>
                 </button>
                 <button class="service-btn" data-service="tenant">
-                    🏠 Tenant Rights
+                    <span class="english">🏠 Tenant Rights</span>
+                    <span class="dzongkha">🏠 ཁྱིམ་པའི་ཐོབ་ཐང</span>
                 </button>
             </div>
 
             <div class="emergency-contacts">
-                <div class="emergency-title">Emergency Contacts</div>
+                <div class="emergency-title">
+                    <span class="english">Emergency Contacts</span>
+                    <span class="dzongkha">འཕྲལ་མྱུར་འབྲེལ་གཏུགས</span>
+                </div>
                 <div class="emergency-list">
-                    Police & General: 113<br>
-                    Fire: 110<br>
-                    Medical: 112<br>
-                    Traffic: 111<br>
-                    Disaster: 999
+                    <span class="english">
+                        Police & General: 113<br>
+                        Fire: 110<br>
+                        Medical: 112<br>
+                        Traffic: 111<br>
+                        Disaster: 999
+                    </span>
+                    <span class="dzongkha">
+                        དམག་གསོ་དང་སྤྱིར་བཏང: ༡༡༣<br>
+                        མེ་འཇིམས: ༡༡༠<br>
+                        སམན་པ: ༡༡༢<br>
+                        འགྲུལ་སྐྱོད: ༡༡༡<br>
+                        ཆེན་པོའི་བརགལ་ལན: ༩༩༩
+                    </span>
                 </div>
             </div>
         </div>
 
         <div class="chat-container">
             <div class="chat-header">
-                <div class="chat-title">🐉 Druk is here to help!</div>
-                <div class="chat-subtitle">Ask me about government services, your rights, or any questions about living in Bhutan</div>
+                <div class="chat-title">
+                    <span class="english">🐉 Druk is here to help!</span>
+                    <span class="dzongkha">🐉 འབྲུག་གིས་རོགས་པ་གནང་རུང་!</span>
+                </div>
+                <div class="chat-subtitle">
+                    <span class="english">Ask me about government services, your rights, or any questions about living in Bhutan</span>
+                    <span class="dzongkha">གཞུང་གི་ཞབས་ཏོག་གམ་ཁྱེད་རང་གི་ཐོབ་ཐང་ འབྲུག་ནང་འཚོ་བ་བྱེད་པའི་སྐོར་གང་འདྲས་འདྲིབ་གནང་རོགས།</span>
+                </div>
             </div>
 
             <div class="messages" id="messages">
                 <div class="welcome-message">
                     <div class="welcome-icon">🐉</div>
-                    <div class="welcome-title">Kuzuzangpo! Welcome to Ask Druk</div>
+                    <div class="welcome-title">
+                        <span class="english">Kuzuzangpo! Welcome to Ask Druk</span>
+                        <span class="dzongkha">ཀུ་ཟུ་ཟང་པོ་ལགས! འདྲི་འབྲུག་ལ་དགའ་བསུ་ཞུ།</span>
+                    </div>
                     <div class="welcome-description">
-                        I'm your friendly AI assistant for all things related to Bhutanese government services and citizen rights. 
-                        I'm here to help you navigate bureaucracy with simple, clear guidance in everyday language.
+                        <span class="english">
+                            I'm your friendly AI assistant for all things related to Bhutanese government services and citizen rights. 
+                            I'm here to help you navigate bureaucracy with simple, clear guidance in everyday language.
+                        </span>
+                        <span class="dzongkha">
+                            ང་ནི་འབྲུག་གི་གཞུང་གི་ཞབས་ཏོག་དང་སྤྱི་མི་ཐོབ་ཐང་འབྲེལ་བའི་གནད་དོན་ཚང་མའི་ཆེད་དུ་ཁྱེད་རང་གི་ཀླད་པ་རིག་ནུས་རོགས་པ་ཞིག་ཡིན། 
+                            ཉིན་རེའི་སྐད་ཆ་འདྲས་གསལ་བའི་ལམ་སྟོན་ཐོག་ནས་གོ་བ་ལེན་པའི་ཆེད་དུ་ང་ཡོད།
+                        </span>
                     </div>
                     <div class="sample-questions">
-                        <div class="sample-question" data-question="How do I apply for a passport?">
-                            🛂 How do I apply for a passport?
+                        <div class="sample-question" data-question-en="How do I apply for a passport?" data-question-dz="འགྲོ་བའི་ལག་ཁྱེར་ཇི་ལྟར་གསུ་ཞུ་དགོས་སམ།">
+                            <span class="english">🛂 How do I apply for a passport?</span>
+                            <span class="dzongkha">🛂 འགྲོ་བའི་ལག་ཁྱེར་ཇི་ལྟར་གསུ་ཞུ་དགོས་སམ།</span>
                         </div>
-                        <div class="sample-question" data-question="I was fired from my job without warning. What are my rights?">
-                            ⚖️ What are my employment rights?
+                        <div class="sample-question" data-question-en="I was fired from my job without warning. What are my rights?" data-question-dz="ངའི་ལས་ཀ་ནས་སྔོན་བརྡ་མེད་པར་ཕྱིར་བཏོན་སོང་། ངའི་ཐོབ་ཐང་གང་འདྲ་ཡོད་དམ།">
+                            <span class="english">⚖️ What are my employment rights?</span>
+                            <span class="dzongkha">⚖️ ངའི་ལས་ཀའི་ཐོབ་ཐང་གང་འདྲ་ཡོད་དམ།</span>
                         </div>
-                        <div class="sample-question" data-question="How do I start a small business in Bhutan?">
-                            💼 How do I register a business?
+                        <div class="sample-question" data-question-en="How do I start a small business in Bhutan?" data-question-dz="འབྲུག་ནང་ཚོང་ལས་ཆུང་ཆུང་ཞིག་ཇི་ལྟར་འགོ་འཛུགས་དགོས་སམ།">
+                            <span class="english">💼 How do I register a business?</span>
+                            <span class="dzongkha">💼 ཚོང་ལས་ཇི་ལྟར་ཐོ་བཀོད་འབད་དགོས་སམ།</span>
                         </div>
-                        <div class="sample-question" data-question="Where is the nearest immigration office?">
-                            📍 Find government offices
+                        <div class="sample-question" data-question-en="Where is the nearest immigration office?" data-question-dz="ཉེ་ཤོས་ཀྱི་ས་སྤོ་ལས་ཁུངས་གང་དུ་ཡོད་དམ།">
+                            <span class="english">📍 Find government offices</span>
+                            <span class="dzongkha">📍 གཞུང་གི་ལས་ཁུངས་རྙེད་རོགས</span>
                         </div>
                     </div>
                 </div>
@@ -525,7 +604,8 @@
             <div class="typing-indicator" id="typingIndicator">
                 <div class="message-avatar assistant">🐉</div>
                 <div>
-                    Druk is thinking...
+                    <span class="english">Druk is thinking...</span>
+                    <span class="dzongkha">འབྲུག་གིས་བསམ་བློ་བཏང་བཞིན་ཡོད...</span>
                     <div class="typing-dots">
                         <div class="typing-dot"></div>
                         <div class="typing-dot"></div>
@@ -551,15 +631,47 @@
     </div>
 
     <script>
+        // Language system
+        const languages = {
+            en: {
+                placeholder: "Ask me anything about government services or your rights...",
+                questions: {
+                    passport: "How do I apply for a passport?",
+                    employment: "I was fired from my job without warning. What are my rights?",
+                    business: "How do I start a small business in Bhutan?",
+                    office: "Where is the nearest immigration office?",
+                    license: "How do I get a driving license?",
+                    birth: "How do I get a birth certificate?",
+                    consumer: "What are my consumer rights?",
+                    tenant: "What are my rights as a tenant?"
+                }
+            },
+            dz: {
+                placeholder: "གཞུང་གི་ཞབས་ཏོག་གམ་ཁྱེད་རང་གི་ཐོབ་ཐང་སྐོར་གང་འདྲས་འདྲིབ་གནང་རོགས...",
+                questions: {
+                    passport: "འགྲོ་བའི་ལག་ཁྱེར་ཇི་ལྟར་གསུ་ཞུ་དགོས་སམ།",
+                    employment: "ངའི་ལས་ཀ་ནས་སྔོན་བརྡ་མེད་པར་ཕྱིར་བཏོན་སོང་། ངའི་ཐོབ་ཐང་གང་འདྲ་ཡོད་དམ།",
+                    business: "འབྲུག་ནང་ཚོང་ལས་ཆུང་ཆུང་ཞིག་ཇི་ལྟར་འགོ་འཛུགས་དགོས་སམ།",
+                    office: "ཉེ་ཤོས་ཀྱི་ས་སྤོ་ལས་ཁུངས་གང་དུ་ཡོད་དམ།",
+                    license: "གཏང་ཆོག་ཆིག་མཐུན་ཇི་ལྟར་ལེན་དགོས་སམ།",
+                    birth: "སྐྱེ་བའི་ཡིག་ཆ་ཇི་ལྟར་ལེན་དགོས་སམ།",
+                    consumer: "ངའི་ཉོ་མཁན་གྱི་ཐོབ་ཐང་གང་འདྲ་ཡོད་དམ།",
+                    tenant: "ངའི་ཁྱིམ་པའི་ཐོབ་ཐང་གང་འདྲ་ཡོད་དམ།"
+                }
+            }
+        };
+
         class DrukChatbot {
             constructor() {
                 this.sessionId = this.generateSessionId();
                 this.messages = [];
                 this.isWelcomeShowing = true;
+                this.currentLanguage = 'en';
                 
                 this.initializeElements();
                 this.bindEvents();
                 this.initializeSession();
+                this.updateLanguage();
             }
             
             generateSessionId() {
@@ -599,7 +711,9 @@
                 // Sample questions
                 document.querySelectorAll('.sample-question').forEach(question => {
                     question.addEventListener('click', () => {
-                        const questionText = question.dataset.question;
+                        const questionText = this.currentLanguage === 'en' 
+                            ? question.dataset.questionEn 
+                            : question.dataset.questionDz;
                         this.messageInput.value = questionText;
                         this.sendMessage();
                     });
@@ -610,9 +724,43 @@
                     btn.addEventListener('click', () => {
                         document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
-                        // Language switching logic would go here
+                        this.currentLanguage = btn.dataset.lang;
+                        this.switchLanguage();
                     });
                 });
+            }
+            
+            switchLanguage() {
+                // Add transition effect
+                document.body.classList.add('lang-transition');
+                
+                setTimeout(() => {
+                    if (this.currentLanguage === 'dz') {
+                        document.body.classList.add('dzongkha-mode');
+                    } else {
+                        document.body.classList.remove('dzongkha-mode');
+                    }
+                    
+                    this.updateLanguage();
+                    
+                    setTimeout(() => {
+                        document.body.classList.remove('lang-transition');
+                    }, 150);
+                }, 150);
+            }
+            
+            updateLanguage() {
+                const lang = languages[this.currentLanguage];
+                
+                // Update placeholder
+                this.messageInput.placeholder = lang.placeholder;
+                
+                // Update input field font for Dzongkha
+                if (this.currentLanguage === 'dz') {
+                    this.messageInput.classList.add('dzongkha');
+                } else {
+                    this.messageInput.classList.remove('dzongkha');
+                }
             }
             
             async initializeSession() {
@@ -625,7 +773,7 @@
                         body: JSON.stringify({
                             session_id: this.sessionId,
                             citizen_context: {
-                                language: 'English',
+                                language: this.currentLanguage === 'en' ? 'English' : 'Dzongkha',
                                 location: 'Thimphu'
                             }
                         })
@@ -639,17 +787,9 @@
             }
             
             handleServiceClick(service) {
-                const serviceQuestions = {
-                    passport: "How do I apply for a passport?",
-                    license: "How do I get a driving license?",
-                    business: "How do I register a new business?",
-                    birth: "How do I get a birth certificate?",
-                    employment: "What are my employment rights?",
-                    consumer: "What are my consumer rights?",
-                    tenant: "What are my rights as a tenant?"
-                };
+                const lang = languages[this.currentLanguage];
+                const question = lang.questions[service];
                 
-                const question = serviceQuestions[service];
                 if (question) {
                     this.messageInput.value = question;
                     this.sendMessage();
@@ -678,6 +818,11 @@
                 this.sendBtn.disabled = true;
                 
                 try {
+                    // Add language preference to the message
+                    const enhancedMessage = this.currentLanguage === 'dz' 
+                        ? `Please respond in Dzongkha script: ${message}`
+                        : message;
+                    
                     const response = await fetch('/chat', {
                         method: 'POST',
                         headers: {
@@ -685,7 +830,8 @@
                         },
                         body: JSON.stringify({
                             session_id: this.sessionId,
-                            message: message
+                            message: enhancedMessage,
+                            language: this.currentLanguage
                         })
                     });
                     
@@ -705,7 +851,10 @@
                 } catch (error) {
                     console.error('Error sending message:', error);
                     this.hideTypingIndicator();
-                    this.addMessage('I apologize, but I\'m having trouble responding right now. Please try again in a moment.', 'assistant');
+                    const errorMessage = this.currentLanguage === 'en' 
+                        ? 'I apologize, but I\'m having trouble responding right now. Please try again in a moment.'
+                        : 'སྐུ་དགོངས་སེལ་ཞུ། ད་ལྟ་ལན་འདེབས་ནང་དཀའ་ངལ་ཡོད་པ་འདྲ། ཏོག་ཙམ་སྒུག་སྟེ་ཡང་བསྐྱར་ཚོད་ལྟ་གནང་རོགས།';
+                    this.addMessage(errorMessage, 'assistant');
                 } finally {
                     this.sendBtn.disabled = false;
                 }
@@ -721,6 +870,12 @@
                 
                 const messageContent = document.createElement('div');
                 messageContent.className = 'message-content';
+                
+                // Apply Dzongkha font if current language is Dzongkha
+                if (this.currentLanguage === 'dz') {
+                    messageContent.classList.add('dzongkha');
+                }
+                
                 messageContent.innerHTML = this.formatMessage(content);
                 
                 messageDiv.appendChild(avatar);
@@ -738,6 +893,11 @@
                     const btn = document.createElement('button');
                     btn.className = 'suggestion-btn';
                     btn.textContent = suggestion;
+                    
+                    if (this.currentLanguage === 'dz') {
+                        btn.classList.add('dzongkha');
+                    }
+                    
                     btn.addEventListener('click', () => {
                         this.messageInput.value = suggestion;
                         this.sendMessage();

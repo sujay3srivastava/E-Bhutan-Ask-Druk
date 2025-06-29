@@ -116,11 +116,11 @@ class IndexManager:
             chat_system_prompt = system_prompt or self.system_prompt
                     
             # Initialize chat memory (session-specific)
-            memory = ChatMemoryBuffer.from_defaults(token_limit=1500)
+            memory = ChatMemoryBuffer.from_defaults(token_limit=500)
 
             # Create chat engine with Druk's personality
             chat_engine = CondensePlusContextChatEngine.from_defaults(
-                retriever=self.global_index.as_retriever(similarity_top_k=5),  # More context for government info
+                retriever=self.global_index.as_retriever(similarity_top_k=2),  # More context for government info
                 memory=memory,
                 verbose=True,
                 system_prompt=chat_system_prompt
