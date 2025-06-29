@@ -16,14 +16,19 @@
 ## 📸 Platform Screenshots
 
 ### Web Interface
-
 <div align="center">
 <h3>🌐 Ask Druk Web Application</h3>
+<img src="Screenshots\Web_Dzongkha.png" alt="Ask Druk Web Interface(Dzongkha)" width="800"/>
+<br>
+<em>Web interface with comprehensive government services access in the Native Language(Dzongkha)</em>
+<div align="center">
 <img src="Screenshots/Web_Screenshot.png" alt="Ask Druk Web Interface" width="800"/>
 <br>
 <em>Full-featured web interface with comprehensive government services access</em>
 </div>
 
+
+</div>
 ### Multi-Platform Integration
 
 <table>
