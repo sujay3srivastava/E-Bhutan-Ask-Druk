@@ -8,7 +8,7 @@
   [![Python](https://img.shields.io/badge/Python-3.12+-blue.svg)](https://python.org)
   [![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-green.svg)](https://fastapi.tiangolo.com)
   [![Live Demo](https://img.shields.io/badge/Live_Demo-askdruk.ravvio.in-orange.svg)](https://askdruk.ravvio.in)
-  [![WhatsApp](https://img.shields.io/badge/WhatsApp-Available-brightgreen.svg)](https://wa.me/14155238886)
+  [![WhatsApp](https://img.shields.io/badge/WhatsApp-Available-brightgreen.svg)](https://wa.me/918220845103)
 </div>
 
 ---
@@ -274,9 +274,10 @@ python application.py
 - Web platform deployment
 - WhatsApp integration
 - English language support
+- Basic Dzongkha Language Support
 
 ### 🚧 **Phase 2: Advanced Features (Q2 2025)**
-- **Dzongkha Language Support** - Native language processing
+- **Full Dzongkha Language Support** - Native language processing
 - **Voice Interface** - Speech-to-text and text-to-speech
 - **Document Upload** - AI analysis of citizen documents
 - **Appointment Booking** - Direct integration with government offices
